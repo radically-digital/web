@@ -17,7 +17,7 @@ const Blog = ({ data: { allPrismicPost } }) => {
             <li key={edge.node.id}>
               <Link to={`/blog/${edge.node.uid}`}>
                 {edge.node.data.title.text}
-              </Link>
+              </Link> - { edge.node.data.date}
             </li>
           )
         })}
@@ -28,7 +28,13 @@ const Blog = ({ data: { allPrismicPost } }) => {
 
 export const pageQuery = graphql`
   query blogPageQuery {
-    allPrismicPost {
+    allPrismicPost(
+      limit: 3
+      sort: {
+        fields: [data___date]
+        order: ASC
+      }
+    ) {
       edges {
         node {
           id
@@ -37,6 +43,7 @@ export const pageQuery = graphql`
             title {
               text
             }
+            date
           }
         }
       }
