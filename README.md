@@ -1,8 +1,8 @@
 # Radically Digital website
 
-Radical Radio Player project. It contains:
-- [x] Gatsby v2.19.24
-- [x] React v16.13.0
+Radical Digital website project. It contains:
+- [x] [Gatsby](https://www.gatsbyjs.org/) v2.19.24
+- [x] [React](https://reactjs.org/) v16.13.0
 - [x] Hot-reloading
 
 ## Prerequisites
