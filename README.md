@@ -4,7 +4,8 @@ Radical Digital website project. It contains:
 - [x] [Gatsby](https://www.gatsbyjs.org/) v2.19.24
 - [x] [React](https://reactjs.org/) v16.13.0
 - [x] Hot-reloading
-- [x] [Prismic CMS](https://prismic.io/) integration 
+- [x] [Prismic CMS](https://prismic.io/) integration
+- [x] Production ready build
 
 ## Prerequisites
 
@@ -21,3 +22,5 @@ Radical Digital website project. It contains:
 ## Available commands
 
 - `npm start` - start development server and watch for changes
+- `npm run build` - create a production ready build in `public` folder
+- `npm run clean` - delete the cache (`.cache`) and build folders
