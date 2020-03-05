@@ -26,7 +26,9 @@
   "dependencies": {
     "gatsby": "^2.19.24",
     "gatsby-plugin-react-helmet": "^3.1.22",
+    "gatsby-plugin-sass": "^2.1.29",
     "gatsby-source-prismic": "^2.3.0-alpha.3",
+    "node-sass": "^4.13.1",
     "prismic-reactjs": "^1.2.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",

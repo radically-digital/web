@@ -6,6 +6,7 @@ Radical Digital website project. It contains:
 - [x] Hot-reloading
 - [x] [Prismic CMS](https://prismic.io/) integration
 - [x] Production ready build
+- [x] Sass support
 
 ## Prerequisites
 
