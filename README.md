@@ -7,7 +7,8 @@ Radical Digital website project. It contains:
 - [x] [Prismic CMS](https://prismic.io/) integration
 - [x] Production ready build
 - [x] Sass support
-- [x] ES6 linting
+- [x] ES6 linting with [Prettier](https://prettier.io/)
+- [x] [CircleCI](https://circleci.com/) integration
 
 ## Prerequisites
 
