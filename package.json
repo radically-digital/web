@@ -10,6 +10,8 @@
     "build": "npm run clean && gatsby build",
     "eslint:check": "eslint --format friendly . --ext .js,.jsx --ignore-path .gitignore",
     "eslint:fix": "npm run eslint:check -- --fix",
+    "stylelint:check": "stylelint ./src/styles/**/*.scss",
+    "stylelint:fix": "stylelint ./src/styles/**/*.scss --fix",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "repository": {
@@ -45,6 +47,9 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.3",
     "gatsby-plugin-eslint": "^2.0.8",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "stylelint": "^13.2.0",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-scss": "^3.14.2"
   }
 }

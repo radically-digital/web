@@ -7,6 +7,7 @@ Radical Digital website project. It contains:
 - [x] [Prismic CMS](https://prismic.io/) integration
 - [x] Production ready build
 - [x] Sass support
+- [x] Stylelint
 - [x] ES6 linting with [Prettier](https://prettier.io/)
 - [x] [CircleCI](https://circleci.com/) integration
 
@@ -29,3 +30,5 @@ Radical Digital website project. It contains:
 - `npm run clean` - delete the cache (`.cache`) and build folders
 - `npm run eslint:check` - execute eslint check
 - `npm run eslint:fix` - execute eslint check and automatically fix problems
+- `npm run stylelint:check` - execute stylelint check
+- `npm run stylelint:fix` - execute stylelint check and automatically fix problems
