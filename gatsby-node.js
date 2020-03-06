@@ -16,7 +16,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   `);
 
   if (blogPostQuery.error) {
-    reporter.panicOnBuild('Error while running GraphQL query:', error);
+    reporter.panicOnBuild('Error while running GraphQL query:', blogPostQuery.error);
   }
 
   const blogPostTemplate = path.resolve('src/pages/blog-post.jsx');
