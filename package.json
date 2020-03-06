@@ -8,6 +8,8 @@
     "start": "npm run develop",
     "develop": "gatsby develop",
     "build": "npm run clean && gatsby build",
+    "eslint:check": "eslint --format friendly . --ext .js,.jsx --ignore-path .gitignore",
+    "eslint:fix": "npm run eslint:check -- --fix",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "repository": {
@@ -35,6 +37,14 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0"
+    "babel-eslint": "^10.1.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^6.8.0",
+    "eslint-formatter-friendly": "^7.0.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.3",
+    "gatsby-plugin-eslint": "^2.0.8",
+    "prettier": "^1.19.1"
   }
 }

@@ -7,6 +7,7 @@ Radical Digital website project. It contains:
 - [x] [Prismic CMS](https://prismic.io/) integration
 - [x] Production ready build
 - [x] Sass support
+- [x] ES6 linting
 
 ## Prerequisites
 
@@ -25,3 +26,5 @@ Radical Digital website project. It contains:
 - `npm start` - start development server and watch for changes
 - `npm run build` - create a production ready build in `public` folder
 - `npm run clean` - delete the cache (`.cache`) and build folders
+- `npm run eslint:check` - execute eslint check
+- `npm run eslint:fix` - execute eslint check and automatically fix problems

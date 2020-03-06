@@ -1,8 +1,12 @@
+const path = require('path');
+
 require('dotenv').config({
   path: '.env',
 });
 
 const website = require('./config/website');
+
+const DEVELOPMENT = process.env.NODE_ENV === 'development';
 
 module.exports = {
   /* General Information */
@@ -21,5 +25,13 @@ module.exports = {
       },
     },
     'gatsby-plugin-sass',
+    {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        formatter: require('eslint-formatter-friendly'),
+        cache: DEVELOPMENT,
+        configFile: path.resolve(__dirname, '.eslintrc'),
+      }
+    }
   ],
 };
