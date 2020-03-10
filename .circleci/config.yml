@@ -51,7 +51,7 @@ jobs:
       - run:
           name: Run ESLint
           command: npm run eslint:check
-  deploy_gh:
+  deploy-gh:
     executor: node
     steps:
       - checkout
