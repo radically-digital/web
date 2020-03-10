@@ -1,0 +1,8 @@
+[class^='icon-'], [class*='icon'] {
+  @extend %icon-container;
+  transition: color ease-in-out 0.3s;
+}
+
+.icon-facebook:before { content: '\e028'; }
+.icon-instagram:before { content: '\e044'; }
+.icon-linkedin:before { content: '\e04c'; }

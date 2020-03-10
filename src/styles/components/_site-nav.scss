@@ -1,0 +1,33 @@
+.site-nav {
+  align-self: center;
+}
+
+.site-nav__list {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.site-nav__item {
+  display: inline-block;
+
+  &:not(:first-child) {
+    margin-left: 2rem;
+  }
+}
+
+.site-nav__link,
+.site-nav__link:visited {
+  color: #666 !important;
+}
+
+.site-nav__link {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: .5px;
+  color: #666;
+  text-transform: uppercase;
+
+  &:hover {
+    color: $color-primary;
+  }
+}

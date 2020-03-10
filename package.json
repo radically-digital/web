@@ -1,0 +1,57 @@
+{
+  "name": "radically-digital",
+  "private": true,
+  "version": "0.1.0",
+  "description": "",
+  "scripts": {
+    "clean": "gatsby clean",
+    "start": "npm run develop",
+    "develop": "gatsby develop",
+    "build": "npm run clean && gatsby build",
+    "eslint:check": "eslint --format friendly . --ext .js,.jsx --ignore-path .gitignore",
+    "eslint:fix": "npm run eslint:check -- --fix",
+    "stylelint:check": "stylelint ./src/styles/**/*.scss",
+    "stylelint:fix": "stylelint ./src/styles/**/*.scss --fix",
+    "deploy": "npm run clean && gatsby build --prefix-paths && cp -R .circleci public && gh-pages -d public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radically-digital/web.git"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "author": "Piotr Lewandowski <cpiotr.lewandowski@radically.digital> (radically.digital)",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/radically-digital/web/issues"
+  },
+  "homepage": "https://github.com/radically-digital/web#readme",
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "gatsby": "^2.19.24",
+    "gatsby-plugin-react-helmet": "^3.1.22",
+    "gatsby-plugin-sass": "^2.1.29",
+    "gatsby-source-prismic": "^2.3.0-alpha.3",
+    "node-sass": "^4.13.1",
+    "prismic-reactjs": "^1.2.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-helmet": "^5.2.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^6.8.0",
+    "eslint-formatter-friendly": "^7.0.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.3",
+    "gatsby-plugin-eslint": "^2.0.8",
+    "gh-pages": "^2.2.0",
+    "prettier": "^1.19.1",
+    "stylelint": "^13.2.0",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-scss": "^3.14.2"
+  }
+}
