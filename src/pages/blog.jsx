@@ -2,15 +2,21 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 
 import Layout from '../components/Layout';
+import PageDescription from '../components/PageDescription';
 
 const Blog = ({ data: { allPrismicPost } }) => {
 
   return (
     <Layout
+      pageClass="blog"
       title="Radically Digital - Blog"
       description="Find out more about Blog at Radically Digital"
     >
-      <h2>Blog</h2>
+      <PageDescription
+        heading="Blog"
+        summary="We love talking about tech, building tech and even writing about tech. Check out our articles below!"
+      />
+
       <ul>
         {allPrismicPost.edges.map((edge) => {
           return (

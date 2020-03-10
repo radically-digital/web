@@ -1,0 +1,9 @@
+body {
+  min-width: $min-width;
+  background-color: $color-secondary;
+}
+
+.page {
+  margin: auto;
+  max-width: $container-width;
+}

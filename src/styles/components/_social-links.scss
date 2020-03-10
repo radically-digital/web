@@ -1,0 +1,31 @@
+.social-links {
+  margin: 7rem 0;
+  max-width: $container-width;
+  color: $color-secondary;
+
+  .icon {
+    color: $color-secondary;
+  }
+}
+
+.social-links__heading {
+  margin-bottom: 2.5rem;
+  max-width: $container-width;
+}
+
+.social-links__list {
+  display: flex;
+  flex-direction: row;
+}
+
+.social-links__item {
+  &:not(:last-child) {
+    margin-right: 2rem;
+  }
+}
+
+.social-links__link {
+  .icon {
+    font-size: 1.8rem;
+  }
+}

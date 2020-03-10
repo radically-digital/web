@@ -1,0 +1,5 @@
+// Set font size in rems. Fallback in pixels for IE
+@mixin font-size($size) {
+  //font-size: #{$size}px;
+  font-size: #{$size / 10}rem;
+}

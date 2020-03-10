@@ -1,0 +1,17 @@
+.site-footer {
+  color: $color-secondary;
+  background-color: $color-primary;
+  padding: 7rem 0 8rem;
+
+  a,
+  a:visited {
+    color: $color-secondary;
+  }
+}
+
+.site-footer__container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: $container-width;
+}

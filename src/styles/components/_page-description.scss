@@ -1,0 +1,15 @@
+.page-description {
+  padding: 5.2rem 0;
+  text-align: center;
+}
+
+.page-description__heading {
+  @extend %h1;
+
+  margin-bottom: 2.6rem;
+}
+
+.page-description__summary {
+  font-size: 1.9rem;
+  color: #808080;
+}
