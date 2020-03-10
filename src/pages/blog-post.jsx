@@ -13,6 +13,7 @@ const BlogPost = ({ data }) => {
 
   return (
     <Layout
+      pageClass="blog-post"
       title="Radically Digital - Blog"
       description="Find out more about Blog at Radically Digital"
     >

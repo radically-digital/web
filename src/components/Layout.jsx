@@ -1,17 +1,35 @@
 import React from 'react';
 
-import Header from './Header';
-import SEO from './SEO';
+const classNames = require('classnames');
 
-const Layout = ({ children, title, description }) => (
-  <>
-    <SEO
-      title={title}
-      description={description}
-    />
-    <Header />
-    <main>{children}</main>
-  </>
-);
+import SEO from './SEO';
+import SiteHeader from './SiteHeader';
+import SiteFooter from './SiteFooter';
+
+const Layout = ({ children, title, description, ...props }) => {
+  const { pageClass } = props;
+  const pageClasses = classNames('page', {
+    [`page-${pageClass}`]: pageClass,
+  });
+
+  return (
+    <div className="site-wrapper">
+      <SEO
+        title={title}
+        description={description}
+      />
+
+      <SiteHeader />
+
+      <main className="page-wrapper">
+        <div className={pageClasses}>
+          {children}
+        </div>
+      </main>
+
+      <SiteFooter/>
+    </div>
+  )
+};
 
 export default Layout;

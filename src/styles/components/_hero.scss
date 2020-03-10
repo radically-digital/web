@@ -1,0 +1,32 @@
+.hero {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 20rem 0;
+  text-align: center;
+  background-color: $color-secondary;
+
+  &--inverted {
+    color: $color-secondary;
+    background-color: $color-primary;
+  }
+}
+
+.hero__heading,
+.hero__summary {
+  margin: auto;
+  max-width: $container-width;
+}
+
+.hero__heading {
+  @extend %h1;
+
+  margin-bottom: 2.6rem;
+}
+
+.hero__summary {
+  font-size: 1.9rem;
+}
