@@ -9,6 +9,7 @@ const website = require('./config/website');
 const DEVELOPMENT = process.env.NODE_ENV === 'development';
 
 module.exports = {
+  pathPrefix: '/web',
   /* General Information */
   siteMetadata: {
     title: website.defaultTitle,

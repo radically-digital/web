@@ -51,6 +51,14 @@ jobs:
       - run:
           name: Run ESLint
           command: npm run eslint:check
+  deploy_gh:
+    executor: node
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - run: git config user.email "piotr.lewandowski@radically.digital"
+      - run: git config user.name "CircleCI"
+      - run: npm run deploy
 
 workflows:
   version: 2.1
@@ -64,4 +72,19 @@ workflows:
                 - master
       - lint:
           requires:
+            - install
+
+  deploy:
+    jobs:
+      - install:
+          filters:
+            branches:
+              only:
+                - master
+      - lint:
+          requires:
+            - install
+      - deploy-gh:
+          requires:
+            - lint
             - install
