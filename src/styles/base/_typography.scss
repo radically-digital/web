@@ -5,6 +5,20 @@ body {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  font-family: $font-family;
+  font-weight: 400;
+  color: $black;
+
+  p {
+    font-size: 1.9rem;
+    line-height: 1.7;
+    margin-bottom: 2.6rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 a,
