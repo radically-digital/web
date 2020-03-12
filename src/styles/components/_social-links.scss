@@ -1,16 +1,15 @@
 .social-links {
   margin: 7rem 0;
   max-width: $container-width;
-  color: $color-secondary;
+  color: $grey-mid;
 
   .icon {
-    color: $color-secondary;
+    color: $white;
   }
 }
 
 .social-links__heading {
   margin-bottom: 2.5rem;
-  max-width: $container-width;
 }
 
 .social-links__list {
@@ -25,7 +24,14 @@
 }
 
 .social-links__link {
+  color: $grey-lighter;
+
+  &:hover {
+    color: $white;
+  }
+
   .icon {
+    color: inherit;
     font-size: 1.8rem;
   }
 }
