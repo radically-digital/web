@@ -1,7 +1,7 @@
 {
   "name": "radically-digital",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "scripts": {
     "clean": "gatsby clean",
@@ -12,7 +12,13 @@
     "eslint:fix": "npm run eslint:check -- --fix",
     "stylelint:check": "stylelint ./src/styles/**/*.scss",
     "stylelint:fix": "stylelint ./src/styles/**/*.scss --fix",
+    "lint": "npm run eslint:check && npm run stylelint:check",
     "deploy": "npm run clean && gatsby build --prefix-paths && cp -R .circleci public && gh-pages -d public"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   },
   "repository": {
     "type": "git",
@@ -49,6 +55,7 @@
     "eslint-plugin-react": "^7.18.3",
     "gatsby-plugin-eslint": "^2.0.8",
     "gh-pages": "^2.2.0",
+    "husky": "^4.2.3",
     "prettier": "^1.19.1",
     "stylelint": "^13.2.0",
     "stylelint-config-recommended-scss": "^4.2.0",

@@ -1,5 +1,7 @@
 # Radically Digital website
 
+[![CircleCI](https://circleci.com/gh/radically-digital/web.svg?style=svg)](https://circleci.com/gh/radically-digital/web)
+
 Radical Digital website project. It contains:
 - [x] [Gatsby](https://www.gatsbyjs.org/) v2.19.24
 - [x] [React](https://reactjs.org/) v16.13.0
