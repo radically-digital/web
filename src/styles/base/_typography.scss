@@ -9,19 +9,41 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   p {
-    font-size: 1.9rem;
-    line-height: 1.7;
-    margin-bottom: 2.6rem;
+    font-size: 1.7rem;
+    line-height: 1.36;
+    margin-bottom: 2.3rem;
 
     &:last-child {
       margin-bottom: 0;
     }
+
+    @media screen and (min-width: $size-small) {
+      font-size: 1.9rem;
+      //line-height: 1.7rem;
+      margin-bottom: 2.6rem;
+    }
+  }
+
+  h1 {
+    @extend %h1;
+  }
+
+  h2 {
+    @extend %h2;
+  }
+
+  h3 {
+    @extend %h3;
+  }
+
+  h4 {
+    @extend %h4;
   }
 }
 
 a,
 a:visited {
-  color: #666;
+  color: $grey-darker;
   text-decoration: none;
   transition: color ease-in-out 0.3s;
 }

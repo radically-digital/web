@@ -1,0 +1,139 @@
+.process {
+  padding-bottom: 7.5rem;
+  border-bottom: 1px solid $grey-border;
+
+  .page-home & {
+    background-color: $bg-secondary;
+  }
+
+  @media screen and (min-width: $size-small) {
+    padding-bottom: 10.5rem;
+  }
+}
+
+.process__container {
+  @extend %container;
+
+  padding: 0 $layout-gutter-width;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media screen and (min-width: $size-small) {
+    flex-direction: row;
+  }
+}
+
+.process__image-container,
+.process__content {
+  @media screen and (min-width: $size-small) {
+    padding: 0 $gutter-width;
+  }
+}
+
+.process__image-container {
+  text-align: center;
+
+  @media screen and (min-width: $size-small) {
+    width: span(6);
+  }
+}
+
+.process__image-container img {
+  margin-bottom: 2.6rem;
+  border-radius: 6px;
+  box-shadow: 0 23px 40px rgba(0, 0, 0, 0.2);
+}
+
+.process__image-container p {
+  font-size: 1.3rem;
+
+  @media screen and (min-width: $size-small) {
+    font-size: 1.4rem;
+  }
+}
+
+.process__image-container a {
+  color: $blue;
+  text-decoration: underline;
+}
+
+.process__content {
+  margin-top: 2.4rem;
+
+  @media screen and (min-width: $size-small) {
+    order: -1;
+    margin-top: 0;
+    width: span(5);
+  }
+}
+
+.process__content a {
+  color: $blue;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.process__list {
+  position: relative;
+}
+
+.process__list::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 1px;
+  left: 2.4rem;
+  top: 0;
+  border-left: 1px solid $grey-border;
+}
+
+.process__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+
+  &:not(:last-child) {
+    margin-bottom: 4.7rem;
+  }
+
+  @media screen and (min-width: $size-small) {
+    &:not(:last-child) {
+      margin-bottom: 5.2rem;
+    }
+  }
+}
+
+.process__number {
+  width: 4.8rem;
+  height: 4.8rem;
+  text-align: center;
+  line-height: 4.8rem;
+  border-radius: 50%;
+  border: 2px solid $blue;
+  background-color: $white;
+}
+
+.process__number span {
+  font-size: 1.7rem;
+  line-height: 1;
+  font-weight: bold;
+  color: $blue;
+}
+
+.process__body {
+  width: 80%;
+}
+
+.process__body p {
+  color: $grey-darker;
+  font-size: 1.3rem;
+  line-height: 1.85;
+}
+
+.process__heading {
+  font-weight: bold;
+}

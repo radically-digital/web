@@ -1,0 +1,36 @@
+.page-title {
+  background-color: $white;
+}
+
+.page-title--home {
+  background-color: $bg-secondary;
+}
+
+.page-title__container {
+  @extend %container;
+
+  padding: 4.7rem $layout-gutter-width;
+  text-align: center;
+
+  @media screen and (min-width: $size-small) {
+    padding: 5.2rem $gutter-width;
+    width: span(7);
+  }
+
+  .page-title--secondary & {
+    padding: 7.5rem $gutter-width;
+    background-color: $bg-secondary;
+
+    @media screen and (min-width: $size-small) {
+      padding: 10.5rem $gutter-width;
+    }
+  }
+}
+
+.page-title__summary {
+  color: $grey-mid;
+}
+
+.page-title__summary p {
+  line-height: 1.1;
+}

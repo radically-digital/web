@@ -1,4 +1,9 @@
 %container {
+  margin: 0 auto;
   padding: 0 $gutter-width / 2;
-  max-width: $container-width;
+  width: auto;
+
+  @media screen and (min-width: $size-small) {
+    max-width: $container-width;
+  }
 }

@@ -1,11 +1,15 @@
 .site-header {
   display: flex;
-  flex-direction: row;
+  flex-flow: column wrap;
   justify-content: space-between;
-  max-width: $container-width;
   margin: auto;
-  padding: 2.6rem 0;
-  line-height: 1rem;
+  padding: $layout-gutter-width;
+  max-width: $container-width;
+
+  @media screen and (min-width: $size-small) {
+    flex-flow: row wrap;
+    padding: 2.6rem 0;
+  }
 }
 
 .site-header__logo {

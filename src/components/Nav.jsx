@@ -19,6 +19,9 @@ const Nav = () => (
       <li className="site-nav__item">
         <Link className="site-nav__link" to="/blog">Blog</Link>
       </li>
+      <li className="site-nav__item site-nav__item--contact">
+        <Link className="button button--primary" to="/contact">Contact us</Link>
+      </li>
     </ul>
   </nav>
 );
