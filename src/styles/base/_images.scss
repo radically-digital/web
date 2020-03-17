@@ -1,0 +1,10 @@
+img {
+  max-width: 100%;
+  height: auto;
+
+  %image-container & {
+    display: block;
+    max-width: none;
+    width: 100%;
+  }
+}

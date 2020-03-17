@@ -9,7 +9,7 @@ const Copyrights = () => {
   const copyrightYears = currentYear > yearOfBuild ? `${yearOfBuild} - ${currentYear}` : currentYear;
   return (
     <div className="copyrights">
-      <p>&copy; {copyrightYears} Radically Digital &mdash; All Rights Reserved</p>
+      <small>&copy; {copyrightYears} Radically Digital &mdash; All Rights Reserved</small>
     </div>
   )
 };

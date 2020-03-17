@@ -1,12 +1,7 @@
 .site-footer {
-  color: $color-secondary;
-  background-color: $color-primary;
+  color: $grey-light;
+  background-color: $black;
   padding: 7rem 0 8rem;
-
-  a,
-  a:visited {
-    color: $color-secondary;
-  }
 }
 
 .site-footer__container {
