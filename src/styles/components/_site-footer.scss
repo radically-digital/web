@@ -1,12 +1,22 @@
 .site-footer {
   color: $grey-light;
   background-color: $black;
-  padding: 7rem 0 8rem;
+  padding: 2.3rem 0 2.4rem;
+
+  @media screen and (min-width: $size-small) {
+    padding: 4.7rem 0 5.2rem;
+  }
 }
 
 .site-footer__container {
+  @extend %container;
+
+  padding: 0 $layout-gutter-width;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  max-width: $container-width;
+
+  @media screen and (min-width: $size-small) {
+    padding: 0 $gutter-width;
+  }
 }
