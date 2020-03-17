@@ -64,7 +64,7 @@ export const pageQuery = graphql`
             title {
               text
             }
-            date(formatString: "MMMM DD YYYY")
+            date(formatString: "MMMM Do YYYY")
             thumbnail_image {
               url
             }
