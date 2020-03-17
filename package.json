@@ -13,7 +13,7 @@
     "stylelint:check": "stylelint ./src/styles/**/*.scss",
     "stylelint:fix": "stylelint ./src/styles/**/*.scss --fix",
     "lint": "npm run eslint:check && npm run stylelint:check",
-    "deploy": "npm run clean && gatsby build --prefix-paths && cp -R .circleci public && gh-pages -d public -m \"[ci skip]\""
+    "deploy": "npm run clean && gatsby build --prefix-paths && gh-pages -d public -m \"[ci skip]\""
   },
   "husky": {
     "hooks": {
