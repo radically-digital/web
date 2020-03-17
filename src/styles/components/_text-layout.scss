@@ -1,7 +1,9 @@
 .text-layout {
-  @extend %container;
-
   background-color: $bg-secondary;
+}
+
+.text-layout__container {
+  @extend %container;
 }
 
 .text-layout__list {

@@ -22,7 +22,14 @@
 }
 
 %h3 {
-  font-size: 2.5rem;
+  font-size: 1.7rem;
+  margin-bottom: 0.9rem;
+  font-weight: 300;
+
+  @media screen and (min-width: $size-small) {
+    font-size: 2.5rem;
+    margin-bottom: 1.3rem;
+  }
 }
 
 %h4 {
@@ -37,7 +44,14 @@
 }
 
 %h5 {
-  font-size: 1.6rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.85;
+  margin-bottom: 0.6rem;
+
+  @media screen and (min-width: $size-small) {
+    font-size: 1.4rem;
+  }
 }
 
 %h6 {

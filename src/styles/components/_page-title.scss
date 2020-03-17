@@ -2,7 +2,8 @@
   background-color: $white;
 }
 
-.page-title--home {
+.page-title--home,
+.page-title--secondary {
   background-color: $bg-secondary;
 }
 
@@ -19,7 +20,6 @@
 
   .page-title--secondary & {
     padding: 7.5rem $gutter-width;
-    background-color: $bg-secondary;
 
     @media screen and (min-width: $size-small) {
       padding: 10.5rem $gutter-width;

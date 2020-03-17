@@ -19,20 +19,22 @@ const AboutUs = () => (
     </section>
 
     <section className="text-layout">
-      <ul className="text-layout__list">
-        <li className="text-layout__item">
-          <h4 className="text-layout__heading">Inclusion</h4>
-          <p className="text-layout__description">Play as a team, win as a team. Whether it's in our recruiting, our work with other Radicals or our collaboration with our clients, we believe inclusion is a fundamental key to success!</p>
-        </li>
-        <li className="text-layout__item">
-          <h4 className="text-layout__heading">Ingenuity</h4>
-          <p className="text-layout__description">We're all about creative problem solving. We encourage taking the mundane and making it Radical by creating new, exciting and better ways of solving our client's challenges</p>
-        </li>
-        <li className="text-layout__item">
-          <h4 className="text-layout__heading">Curiosity</h4>
-          <p className="text-layout__description">Radically Digital was born from a search for a new way to solve the digital skills gap. We bake that curiosity and hunger for learning into everything we do</p>
-        </li>
-      </ul>
+      <div className="text-layout__container">
+        <ul className="text-layout__list">
+          <li className="text-layout__item">
+            <h4 className="text-layout__heading">Inclusion</h4>
+            <p className="text-layout__description">Play as a team, win as a team. Whether it's in our recruiting, our work with other Radicals or our collaboration with our clients, we believe inclusion is a fundamental key to success!</p>
+          </li>
+          <li className="text-layout__item">
+            <h4 className="text-layout__heading">Ingenuity</h4>
+            <p className="text-layout__description">We're all about creative problem solving. We encourage taking the mundane and making it Radical by creating new, exciting and better ways of solving our client's challenges</p>
+          </li>
+          <li className="text-layout__item">
+            <h4 className="text-layout__heading">Curiosity</h4>
+            <p className="text-layout__description">Radically Digital was born from a search for a new way to solve the digital skills gap. We bake that curiosity and hunger for learning into everything we do</p>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <section className="features-large">
