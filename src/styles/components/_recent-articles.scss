@@ -1,0 +1,96 @@
+.recent-articles {
+  border-top: 1px solid $grey-border;
+  border-bottom: 1px solid $grey-border;
+  background-color: $bg-secondary;
+}
+
+.recent-articles__container {
+  @extend %container;
+
+  padding-top: 6.5rem;
+  padding-bottom: 6.5rem;
+
+  @media screen and (min-width: $size-small) {
+    padding-top: 7.5rem;
+    padding-bottom: 7.5rem;
+  }
+}
+
+.recent-articles__heading {
+  margin-bottom: 2.6rem;
+  color: $grey-darker;
+
+  @media screen and (min-width: $size-small) {
+    padding: 0 $gutter-width/2;
+  }
+}
+
+.recent-articles__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @media screen and (min-width: $size-small) {
+    flex-direction: row;
+  }
+}
+
+.recent-articles__item {
+  overflow: hidden;
+  margin-bottom: 3rem;
+  box-sizing: border-box;
+
+  @media screen and (min-width: $size-small) {
+    flex: 0 0 33.333333%;
+    padding: 0 $gutter-width/2;
+  }
+}
+
+.recent-articles__thumb {
+  @extend %image-container;
+
+  overflow: hidden;
+  position: relative;
+  max-height: 245px;
+  border-radius: 6px 6px 0 0;
+
+  @media screen and (min-width: $size-small) {
+    max-height: 210px;
+  }
+}
+
+.recent-articles__content {
+  padding: 1.6rem;
+  line-height: 1.85;
+  border: 1px solid $grey-border;
+  background-color: $white;
+  border-radius: 0 0 6px 6px;
+
+  @media screen and (min-width: $size-small) {
+    padding: 2.6rem;
+  }
+}
+
+.recent-articles__date {
+  font-size: 1.3rem;
+  color: $grey-darker;
+
+  @media screen and (min-width: $size-small) {
+    font-size: 1.4rem;
+  }
+}
+
+.recent-articles__title {
+  font-size: 1.3rem;
+  min-height: 4.8rem;
+}
+
+.recent-articles__content a {
+  font-size: 1.3rem;
+  color: $blue;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

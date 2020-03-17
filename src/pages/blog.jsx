@@ -18,17 +18,31 @@ const Blog = ({ data: { allPrismicPost } }) => {
         </div>
       </section>
 
-      <ul>
-        {allPrismicPost.edges.map((edge) => {
-          return (
-            <li key={edge.node.id}>
-              <Link to={`/blog/${edge.node.uid}`}>
-                {edge.node.data.title.text}
-              </Link> - { edge.node.data.date}
-            </li>
-          )
-        })}
-      </ul>
+      <section className="recent-articles">
+        <div className="recent-articles__container">
+          <h3 className="recent-articles__heading">Recent Articles</h3>
+          <ul className="recent-articles__list">
+            {
+              allPrismicPost.edges.map((edge) => {
+                return (
+                  <li className="recent-articles__item" key={edge.node.id}>
+                    <div className="recent-articles__thumb">
+                      <img src={edge.node.data.thumbnail_image.url} alt=""/>
+                    </div>
+                    <div className="recent-articles__content">
+                      <span className="recent-articles__date">{edge.node.data.date}</span>
+
+                      <h5 className="recent-articles__title">{edge.node.data.title.text}</h5>
+
+                      <Link className="recent-articles__link" to={`/blog/${edge.node.uid}`}>Read more</Link>
+                    </div>
+                  </li>
+                )
+              })
+            }
+          </ul>
+        </div>
+      </section>
     </Layout>
   )
 };
@@ -39,7 +53,7 @@ export const pageQuery = graphql`
       limit: 3
       sort: {
         fields: [data___date]
-        order: ASC
+        order: DESC
       }
     ) {
       edges {
@@ -50,7 +64,10 @@ export const pageQuery = graphql`
             title {
               text
             }
-            date
+            date(formatString: "MMMM DD YYYY")
+            thumbnail_image {
+              url
+            }
           }
         }
       }
