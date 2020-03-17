@@ -7,11 +7,11 @@
   margin-right: -50vw;
   padding: 20rem 0;
   text-align: center;
-  background-color: $color-secondary;
+  background-color: $black;
 
   &--inverted {
-    color: $color-secondary;
-    background-color: $color-primary;
+    color: $black;
+    background-color: $white;
   }
 }
 

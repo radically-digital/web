@@ -1,0 +1,37 @@
+.text-layout {
+  @extend %container;
+
+  background-color: $bg-secondary;
+}
+
+.text-layout__list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 7.5rem;
+
+  @media screen and (min-width: $size-small) {
+    padding-bottom: 10.5rem;
+  }
+}
+
+.text-layout__item {
+  margin-bottom: 3rem;
+
+  @media screen and (min-width: $size-small) {
+    flex: 0 0 33.333333%;
+    margin-bottom: 0;
+    padding: 0 $gutter-width;
+  }
+}
+
+.text-layout__description {
+  padding: 0 4.2rem;
+  font-size: 1.3rem;
+  line-height: 1.85;
+  color: $grey-darker;
+
+  @media screen and (min-width: $size-small) {
+    margin-bottom: 0;
+    padding: 0 $gutter-width 0 0;
+  }
+}

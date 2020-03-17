@@ -1,0 +1,45 @@
+.button,
+.button:visited {
+  display: block;
+  padding: 0.6rem 3.6rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.85;
+  text-transform: uppercase;
+  color: $white;
+  background-color: $grey-mid;
+  border: 1px solid $grey-mid;
+  border-radius: 6px;
+
+  transition: all 0.3s ease-in-out;
+  transform: translate(0, 0);
+
+
+  &:hover {
+    background-color: $grey-darker;
+    transform: translate(0, -3px);
+  }
+
+  @media screen and (min-width: $size-small) {
+    display: inline-block;
+    font-size: 1.2rem;
+  }
+}
+
+.button--primary,
+.button--primary:visited {
+  background-color: $blue;
+  border-color: $blue;
+
+  width: 100%;
+
+  &:hover {
+    background-color: lighten($blue, 5%);
+  }
+}
+
+.button--short {
+  display: inline-block;
+  width: auto;
+}

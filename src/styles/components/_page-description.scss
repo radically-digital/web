@@ -1,5 +1,7 @@
 .page-description {
-  padding: 5.2rem 0;
+  width: span(8);
+  margin-left: span(2);
+  padding: 5.2rem $gutter-width;
   text-align: center;
 }
 
@@ -10,6 +12,5 @@
 }
 
 .page-description__summary {
-  font-size: 1.9rem;
-  color: #808080;
+  color: $grey-mid;
 }
