@@ -1,7 +1,7 @@
 {
   "name": "radically-digital",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "",
   "scripts": {
     "clean": "gatsby clean",
