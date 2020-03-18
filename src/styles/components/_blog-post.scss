@@ -1,35 +1,32 @@
-.blog-post__meta {
-  padding: 4.7rem 0;
-  background-color: $bg-secondary;
-  border-top: 1px solid $grey-border;
-  border-bottom: 1px solid $grey-border;
-
-  @media screen and (min-width: $size-small) {
-    padding: 5.2rem 0;
-  }
+.blog-post {
+  @extend %container;
 }
 
 .blog-post__container {
-  @extend %container;
-  padding: 0 $layout-gutter-width;
+  margin: 0 auto;
+  padding: 2.7rem 0 4.7rem;
 
   @media screen and (min-width: $size-small) {
-    padding: 0;
-    width: span(8);
+    padding: 5.2rem 0;
+    width: span(9);
   }
 }
 
 .blog-post__heading {
-  margin-bottom: 1.2rem;
+  margin-bottom: 0;
+  padding-bottom: 1.15rem;
+  line-height: 1.35;
+  border-bottom: 1px solid $grey-border;
+}
 
-  @media screen and (min-width: $size-small) {
-    margin-bottom: 1.7rem;
-  }
+.blog-post__meta {
+  padding: 0.6rem 0 1.5rem;
 }
 
 .blog-post__date {
-  color: $grey-darker;
+  margin: 0 0 0.4rem;
   font-size: 1.3rem;
+  color: $grey-darker;
 
   @media screen and (min-width: $size-small) {
     font-size: 1.4rem;
@@ -37,12 +34,72 @@
 }
 
 .blog-post__content {
-  @extend %container;
-
-  padding: 4.5rem $layout-gutter-width;
+  padding-top: 1.2rem;
 
   @media screen and (min-width: $size-small) {
-    width: span(8);
-    padding: 7rem 0;
+    padding-top: 1.8rem;
   }
+}
+
+.blog-post__content h2,
+.blog-post__content h3,
+.blog-post__content h4,
+.blog-post__content h5,
+.blog-post__content h6 {
+  font-weight: 400;
+}
+
+.blog-post__content p {
+  margin-bottom: 2.3rem;
+  line-height: 1.45;
+}
+
+.blog-post__content blockquote {
+  border-left: 1px solid $grey-border;
+  padding: 1rem;
+}
+
+.blog-post__content pre,
+.blog-post__content code {
+  margin-bottom: 1.8rem;
+  padding: 0.9rem;
+  font-family: Menlo, Monaco, 'Courier New', monospace;
+  line-height: 1.25;
+  white-space: pre;
+  background-color: $bg-secondary;
+}
+
+.blog-post__content ul,
+.blog-post__content ol {
+  margin-bottom: 1.8rem;
+  padding-left: 4rem;
+}
+.blog-post__content ul {
+  list-style: outside disc;
+}
+
+.blog-post__content ol {
+  list-style: outside decimal;
+}
+
+.blog-post__content a {
+  color: $blue;
+  text-decoration: underline;
+
+  &:hover {
+    color: $blue-light;
+  }
+}
+
+.blog-post__content b,
+.blog-post__content strong {
+  font-weight: bold;
+}
+.blog-post__content i,
+.blog-post__content em {
+  font-style: italic;
+}
+
+.blog-post__content .block-img {
+  @extend %image-container;
 }
