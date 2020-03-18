@@ -13,5 +13,9 @@
 }
 
 .site-header__logo {
-  max-height: 5.6rem;
+  height: 5.1rem;
+
+  @media screen and (min-width: $size-small) {
+    height: 5.6rem;
+  }
 }

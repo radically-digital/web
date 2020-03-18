@@ -52,10 +52,20 @@
   overflow: hidden;
   position: relative;
   max-height: 245px;
+  border: 1px solid $grey-border;
   border-radius: 6px 6px 0 0;
+  background-color: $white;
 
   @media screen and (min-width: $size-small) {
     max-height: 210px;
+  }
+}
+
+.recent-articles__thumb img {
+  height: 245px;
+
+  @media screen and (min-width: $size-small) {
+    height: 210px;
   }
 }
 
@@ -63,11 +73,22 @@
   padding: 1.6rem;
   line-height: 1.85;
   border: 1px solid $grey-border;
+  border-top: none;
   background-color: $white;
   border-radius: 0 0 6px 6px;
 
   @media screen and (min-width: $size-small) {
     padding: 2.6rem;
+  }
+}
+
+.recent-articles__content a {
+  font-size: 1.3rem;
+  color: $blue;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
   }
 }
 
@@ -82,15 +103,7 @@
 
 .recent-articles__title {
   font-size: 1.3rem;
-  min-height: 4.8rem;
-}
-
-.recent-articles__content a {
-  font-size: 1.3rem;
-  color: $blue;
-  font-weight: bold;
-
-  &:hover {
-    text-decoration: underline;
-  }
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
