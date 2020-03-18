@@ -2,9 +2,9 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 
 import Layout from '../components/Layout';
+import RDLogo from '../assets/logos/lock-up_square-gradient.svg';
 
 const Blog = ({ data: { allPrismicPost } }) => {
-
   return (
     <Layout
       pageClass="blog"
@@ -24,17 +24,21 @@ const Blog = ({ data: { allPrismicPost } }) => {
           <ul className="recent-articles__list">
             {
               allPrismicPost.edges.map((edge) => {
+                const { node, node: { data: { thumbnail_image } } } = edge;
+                const image_url = thumbnail_image.url ? thumbnail_image.url : RDLogo;
+                const alt_text = !thumbnail_image.url ? 'RD logo' : !thumbnail_image.alt ? 'Post thumbnail' : thumbnail_image.alt;
+
                 return (
-                  <li className="recent-articles__item" key={edge.node.id}>
+                  <li className="recent-articles__item" key={node.id}>
                     <div className="recent-articles__thumb">
-                      <img src={edge.node.data.thumbnail_image.url} alt=""/>
+                      <img src={image_url} alt={alt_text}/>
                     </div>
                     <div className="recent-articles__content">
-                      <span className="recent-articles__date">{edge.node.data.date}</span>
+                      <span className="recent-articles__date">{node.first_publication_date}</span>
 
-                      <h5 className="recent-articles__title">{edge.node.data.title.text}</h5>
+                      <h5 className="recent-articles__title">{node.data.title.text}</h5>
 
-                      <Link className="recent-articles__link" to={`/blog/${edge.node.uid}`}>Read more</Link>
+                      <Link className="recent-articles__link" to={`/blog/${node.uid}`}>Read more</Link>
                     </div>
                   </li>
                 )
@@ -52,7 +56,7 @@ export const pageQuery = graphql`
     allPrismicPost(
       limit: 3
       sort: {
-        fields: [data___date]
+        fields: [first_publication_date]
         order: DESC
       }
     ) {
@@ -60,13 +64,14 @@ export const pageQuery = graphql`
         node {
           id
           uid
+          first_publication_date(formatString: "MMMM Do YYYY")
           data {
             title {
               text
             }
-            date(formatString: "MMMM Do YYYY")
             thumbnail_image {
               url
+              alt
             }
           }
         }
