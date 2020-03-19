@@ -1,11 +1,18 @@
 const path = require('path');
 
+const { postsPerPage } = require('./config/website');
+
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  const blogPostQuery = await graphql(`
+  const postTemplate = path.resolve('src/pages/post.jsx');
+  const postsTemplate = path.resolve('src/pages/posts.jsx');
+
+  return graphql(
+    `
     {
       allPrismicPost {
+        totalCount
         edges {
           node {
             uid
@@ -13,21 +20,44 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
       }
     }
-  `);
+    `
+  ).then((result) => {
+    if (result.errors) {
+      reporter.panicOnBuild('Error while running GraphQL query:', result.errors);
+    }
 
-  if (blogPostQuery.error) {
-    reporter.panicOnBuild('Error while running GraphQL query:', blogPostQuery.error);
-  }
+    // Create blog posts pages
+    const posts = result.data.allPrismicPost.edges;
+    const totalCount = result.data.allPrismicPost.totalCount;
 
-  const blogPostTemplate = path.resolve('src/pages/blog-post.jsx');
+    posts.forEach((post) => {
+      createPage({
+        path: `/post/${post.node.uid}`,
+        component: postTemplate,
+        context: {
+          uid: post.node.uid,
+        },
+      });
+    });
 
-  blogPostQuery.data.allPrismicPost.edges.forEach((edge) => {
-    createPage({
-      path: `/blog/${edge.node.uid}`,
-      component: blogPostTemplate,
-      context: {
-        uid: edge.node.uid,
-      },
+    // Create blog post list pages
+    const numPages = Math.ceil(totalCount / postsPerPage);
+
+    Array.from({ length: numPages }).forEach((_, i) => {
+      const limit = postsPerPage;
+      const skip = i * postsPerPage;
+      const currentPage = i + 1;
+
+      createPage({
+        path: i === 0 ? '/blog/' : `/blog/${i + 1}`,
+        component: postsTemplate,
+        context: {
+          limit,
+          skip,
+          numPages,
+          currentPage,
+        },
+      });
     });
   });
 };

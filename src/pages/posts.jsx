@@ -4,7 +4,15 @@ import { graphql, Link } from 'gatsby';
 import Layout from '../components/Layout';
 import RDLogo from '../assets/logos/lock-up_square-gradient.svg';
 
-const Blog = ({ data: { allPrismicPost } }) => {
+const Posts = (props) => {
+  const posts = props.data.allPrismicPost;
+  const { currentPage, numPages } = props.pageContext;
+
+  const isFirst = currentPage === 1;
+  const isLast = currentPage === numPages;
+  const prevPage = currentPage - 1 === 1 ? '/blog' : `/blog/${(currentPage - 1).toString()}`;
+  const nextPage = `/blog/${(currentPage + 1).toString()}`;
+
   return (
     <Layout
       pageClass="blog"
@@ -23,8 +31,8 @@ const Blog = ({ data: { allPrismicPost } }) => {
           <h3 className="recent-articles__heading">Recent Articles</h3>
           <ul className="recent-articles__list">
             {
-              allPrismicPost.edges.map((edge) => {
-                const { node, node: { data: { thumbnail_image } } } = edge;
+              posts.edges.map((post) => {
+                const { node, node: { data: { thumbnail_image } } } = post;
                 const image_url = thumbnail_image.url ? thumbnail_image.url : RDLogo;
                 const alt_text = !thumbnail_image.url ? 'RD logo' : !thumbnail_image.alt ? 'Post thumbnail' : thumbnail_image.alt;
 
@@ -38,12 +46,27 @@ const Blog = ({ data: { allPrismicPost } }) => {
 
                       <h5 className="recent-articles__title">{node.data.title.text}</h5>
 
-                      <Link className="recent-articles__link" to={`/blog/${node.uid}`}>Read more</Link>
+                      <Link className="recent-articles__link" to={`/post/${node.uid}`}>Read more</Link>
                     </div>
                   </li>
                 )
               })
             }
+          </ul>
+        </div>
+
+        <div className="article-pagination">
+          <ul className="article-pagination__list">
+            {!isFirst && (
+              <li className="article-pagination__item article-pagination__item--prev">
+                <Link to={prevPage} rel="prev" className="button button--primary">← Previous Page</Link>
+              </li>
+            )}
+            {!isLast && (
+              <li className="article-pagination__item article-pagination__item--next">
+                <Link to={nextPage} rel="next" className="button button--primary">Next Page →</Link>
+              </li>
+            )}
           </ul>
         </div>
       </section>
@@ -52,9 +75,10 @@ const Blog = ({ data: { allPrismicPost } }) => {
 };
 
 export const pageQuery = graphql`
-  query blogPageQuery {
+  query blogPageQuery($skip: Int, $limit: Int) {
     allPrismicPost(
-      limit: 3
+      limit: $limit
+      skip: $skip
       sort: {
         fields: [first_publication_date]
         order: DESC
@@ -80,4 +104,4 @@ export const pageQuery = graphql`
   }
 `;
 
-export default Blog;
+export default Posts;

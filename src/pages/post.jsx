@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/Layout';
 
-const BlogPost = ({ data }) => {
+const Post = ({ data }) => {
   const {
     data: postData,
     first_publication_date: publish_date,
@@ -49,4 +49,4 @@ export const pageQuery = graphql`
   }
 `;
 
-export default BlogPost;
+export default Post;

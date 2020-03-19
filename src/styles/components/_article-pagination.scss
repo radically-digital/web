@@ -1,0 +1,17 @@
+.article-pagination {
+  @extend %container;
+  padding: 0 $layout-gutter-width 4.7rem;
+
+  @media screen and (min-width: $size-small) {
+    //padding-bottom: 5.2rem;
+    padding: 0 $gutter-width 5.2rem;
+  }
+}
+
+.article-pagination__item--prev {
+  float: left;
+}
+
+.article-pagination__item--next {
+  float: right;
+}
