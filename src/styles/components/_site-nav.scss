@@ -1,6 +1,23 @@
 .site-nav {
+  display: none;
+  padding: $gutter-width;
+  border-bottom: 1px solid $grey-border;
+
+  &[open] {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: $white;
+    transform: translate(0, 100%);
+  }
+
   @media screen and (min-width: $size-small) {
+    position: relative;
+    display: block;
     align-self: center;
+    border: none;
   }
 }
 

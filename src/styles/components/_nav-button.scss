@@ -1,0 +1,20 @@
+.nav-button {
+  --button-size: 3.2rem;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  z-index: 10;
+
+  @media screen and (min-width: $size-small) {
+    display: none;
+  }
+}
+
+.nav-button .stack-menu {
+  position: relative;
+  font-size: var(--button-size);
+  transition: all 0.3s linear;
+  transform-origin: 1px;
+}

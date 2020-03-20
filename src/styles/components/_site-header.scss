@@ -2,6 +2,7 @@
   display: flex;
   flex-flow: column wrap;
   justify-content: space-between;
+  position: relative;
   margin: auto;
   padding: $layout-gutter-width;
   max-width: $container-width;
@@ -12,6 +13,13 @@
   }
 }
 
+.site-header__toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .site-header__logo {
   height: 5.1rem;
 
@@ -19,3 +27,4 @@
     height: 5.6rem;
   }
 }
+
