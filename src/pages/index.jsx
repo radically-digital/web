@@ -10,6 +10,7 @@ import ClientImage4 from '../assets/images/client-image-4.jpg';
 import ClientImage5 from '../assets/images/client-image-5.jpg';
 import ClientImage6 from '../assets/images/client-image-6.jpg';
 import ProcessImage from '../assets/images/coworking-room.jpg';
+import TestimonialSlider from '../components/TestimonialSlider';
 
 const IndexPage = () => (
   <Layout pageClass="home">
@@ -98,6 +99,8 @@ const IndexPage = () => (
         </li>
       </ul>
     </section>
+
+    <TestimonialSlider/>
   </Layout>
 );
 

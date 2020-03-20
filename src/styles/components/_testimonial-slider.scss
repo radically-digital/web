@@ -1,0 +1,143 @@
+.testimonial-slider {
+  padding: 6rem 0;
+  border-top: 1px solid $grey-border;
+  background-color: $bg-secondary;
+
+  @media screen and (min-width: $size-small) {
+    padding: 7rem 0;
+  }
+}
+
+.testimonial-slider__container {
+  @extend %container;
+}
+
+.testimonial-slider__inner {
+  position: relative;
+  height: 430px;
+
+  @media screen and (min-width: $size-small) {
+    height: 300px;
+  }
+}
+
+.testimonial-slider__slides {
+  overflow: hidden;
+}
+
+.testimonial-slider__slide {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  transition: all 0.6s ease-in-out;
+
+  &[aria-hidden='true'] {
+    opacity: 0;
+  }
+}
+
+.testimonial-slider__slide--active {
+  opacity: 1;
+}
+
+.testimonial-slider__photo {
+  @extend %image-container;
+
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 0 $gutter-width;
+
+  @media screen and (min-width: $size-small) {
+    flex: 0 0 16.6666666667%;
+    max-width: 16.6666666667%;
+  }
+}
+
+.testimonial-slider__photo img {
+  margin-bottom: 2.3rem;
+}
+
+.testimonial-slider__content {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding: 0 $gutter-width;
+
+  @media screen and (min-width: $size-small) {
+    flex: 0 0 58.3333333333%;
+    max-width: 58.3333333333%;
+  }
+}
+
+.testimonial-slider__testimony {
+  font-size: 1.7rem;
+  margin-bottom: 1.8rem;
+  font-weight: 300;
+
+  @media screen and (min-width: $size-small) {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.testimonial-slider__name {
+  font-size: 1.3rem;
+  margin: 0;
+  line-height: 1;
+
+  @media screen and (min-width: $size-small) {
+    font-size: 1.4rem;
+  }
+}
+
+.testimonial-slider__position {
+  font-size: 1.3rem;
+  margin: 0;
+
+  @media screen and (min-width: $size-small) {
+    font-size: 1.4rem;
+  }
+}
+
+.testimonial-slider__button {
+  @extend %stack-container;
+
+  display: none;
+  position: absolute;
+  padding: 0.6rem;
+  top: 50%;
+  font-size: 2.8rem;
+  color: $black;
+  border: none;
+  background: none;
+  transform: translateY(-50%);
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  @media screen and (min-width: $size-small) {
+    display: block;
+  }
+}
+
+.testimonial-slider__button--prev {
+  left: 0;
+
+  &:before {
+    content: '\e801';
+  }
+}
+
+.testimonial-slider__button--next {
+  right: 0;
+  &:before {
+    content: '\e802';
+  }
+}
