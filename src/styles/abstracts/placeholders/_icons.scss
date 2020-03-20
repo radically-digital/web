@@ -21,3 +21,28 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@font-face {
+  font-family: 'stack-interface';
+  src: url('../assets/fonts/stack-interface.eot');
+  src: url('../assets/fonts/stack-interface.eot') format('embedded-opentype'),
+  url('../assets/fonts/stack-interface.woff2') format('woff2'),
+  url('../assets/fonts/stack-interface.woff') format('woff'),
+  url('../assets/fonts/stack-interface.ttf') format('truetype'),
+  url('../assets/fonts/stack-interface.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+%stack-container {
+  font-family: 'stack-interface';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

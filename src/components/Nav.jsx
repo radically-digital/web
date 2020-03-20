@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-const Nav = () => (
-  <nav className="site-nav">
+const Nav = ({ open }) => (
+  <nav className="site-nav" open={open}>
     <ul className="site-nav__list">
       <li className="site-nav__item">
         <Link className="site-nav__link" to="/">Home</Link>

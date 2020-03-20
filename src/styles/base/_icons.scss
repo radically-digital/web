@@ -1,4 +1,5 @@
-[class^='icon-'], [class*='icon'] {
+[class^='icon-'],
+[class*=' icon-'] {
   @extend %icon-container;
   transition: color ease-in-out 0.3s;
 }
@@ -6,3 +7,11 @@
 .icon-facebook:before { content: '\e028'; }
 .icon-instagram:before { content: '\e044'; }
 .icon-linkedin:before { content: '\e04c'; }
+
+[class^='stack-']:before,
+[class*=' stack-']:before {
+  @extend %stack-container;
+  transition: color ease-in-out 0.3s;
+}
+
+.stack-menu:before { content: '\e80e'; }
