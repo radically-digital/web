@@ -47,7 +47,7 @@ const Posts = props => {
                 ? thumbnail_image.url
                 : RDLogo;
               const alt_text = !thumbnail_image.url
-                ? 'RD logo'
+                ? 'Radically Digital logo'
                 : !thumbnail_image.alt
                 ? 'Post thumbnail'
                 : thumbnail_image.alt;
