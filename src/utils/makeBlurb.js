@@ -1,4 +1,9 @@
+/* eslint-disable no-console */
 export const makeBlurb = (rawHtml, charCount = 150) => {
+  if (!rawHtml) {
+    return '';
+  }
+
   const count = new RegExp('.{0,' + charCount + '}\\S+'); // Grab chararacters and end on the word.
   const htmlCleanString = rawHtml
     .replace(/<[^>]*>/gim, '') // strip html

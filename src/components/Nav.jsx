@@ -5,49 +5,53 @@ import { useStaticQuery, graphql } from 'gatsby';
 const query = graphql`
   query {
     site {
-      urlMain
-      urlTransitioning
+      siteMetadata {
+        urlMain
+        urlTransitioning
+      }
     }
   }
 `;
 
 const Nav = ({ open }) => {
   const {
-    site: { urlMain, urlTransitioning },
+    site: {
+      siteMetadata: { urlMain },
+    },
   } = useStaticQuery(query);
 
   return (
     <nav className="site-nav" open={open}>
       <ul className="site-nav__list">
         <li className="site-nav__item">
-          <Link className="site-nav__link" to={`${urlMain}/`}>
+          <a className="site-nav__link" href={`${urlMain}/`}>
             Home
-          </Link>
+          </a>
         </li>
         <li className="site-nav__item">
-          <Link className="site-nav__link" to={`${urlMain}/about-us`}>
+          <a className="site-nav__link" href={`${urlMain}/about-us`}>
             About us
-          </Link>
+          </a>
         </li>
         <li className="site-nav__item">
-          <Link className="site-nav__link" to={`${urlMain}/services`}>
+          <a className="site-nav__link" href={`${urlMain}/services`}>
             Services
-          </Link>
+          </a>
         </li>
         <li className="site-nav__item">
-          <Link className="site-nav__link" to={`${urlMain}/join-us`}>
+          <a className="site-nav__link" href={`${urlMain}/join-us`}>
             Join us
-          </Link>
+          </a>
         </li>
         <li className="site-nav__item">
-          <Link className="site-nav__link" to={`${urlTransitioning}/insights`}>
+          <Link className="site-nav__link" to="/insights">
             Insights
           </Link>
         </li>
         <li className="site-nav__item site-nav__item--contact">
-          <Link className="button button--primary" to={`${urlMain}/contact`}>
+          <a className="button button--primary" href={`${urlMain}/contact`}>
             Contact us
-          </Link>
+          </a>
         </li>
       </ul>
     </nav>
