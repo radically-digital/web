@@ -14,8 +14,8 @@ const Post = ({ data }) => {
   return (
     <Layout
       pageClass="blog-post"
-      title="Radically Digital - Blog"
-      description="Find out more about Blog at Radically Digital"
+      title={`${title} | Radically Digital`}
+      description={content}
     >
       <section className="blog-post">
         <div className="blog-post__container">
@@ -25,11 +25,14 @@ const Post = ({ data }) => {
             <p className="blog-post__date">Published: {publish_date}</p>
           </div>
 
-          <article className="blog-post__content" dangerouslySetInnerHTML={{ __html: content }} />
+          <article
+            className="blog-post__content"
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
         </div>
       </section>
     </Layout>
-  )
+  );
 };
 
 export const pageQuery = graphql`
