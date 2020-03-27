@@ -9,7 +9,7 @@ const SocialLinks = () => (
       <li className="social-links__item">
         <a
           className="social-links__link"
-          href="https://www.linkedin.com/company/radically-digital/"
+          href="https://www.linkedin.com/company/radically-digital"
         >
           <Icon name="linkedin" />
         </a>
@@ -17,7 +17,7 @@ const SocialLinks = () => (
       <li className="social-links__item">
         <a
           className="social-links__link"
-          href="https://www.instagram.com/radically.digital/"
+          href="https://www.instagram.com/radicallydigital"
         >
           <Icon name="instagram" />
         </a>
@@ -25,7 +25,7 @@ const SocialLinks = () => (
       <li className="social-links__item">
         <a
           className="social-links__link"
-          href="https://www.facebook.com/radically-digital/"
+          href="https://www.facebook.com/radically-digital"
         >
           <Icon name="facebook" />
         </a>
