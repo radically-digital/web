@@ -68,7 +68,7 @@ const Posts = props => {
 
                     <Link
                       className="recent-articles__link"
-                      to={`/post/${node.uid}`}
+                      to={`/insights/${node.uid}`}
                     >
                       Read more
                     </Link>
