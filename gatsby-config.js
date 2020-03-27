@@ -14,9 +14,9 @@ module.exports = {
   siteMetadata: {
     title: website.defaultTitle,
     description: website.defaultDescription,
+    urlMain: 'https://radically.digital',
+    urlTransitioning: 'https://insights.radically.digital',
   },
-  urlMain: '//radically.digital',
-  urlTransitioning: '//insights.radically.digital',
   /* Plugins */
   plugins: [
     'gatsby-plugin-react-helmet',

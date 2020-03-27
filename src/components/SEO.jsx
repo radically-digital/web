@@ -25,8 +25,8 @@ const SEO = ({
   const { site } = useStaticQuery(query);
   const blurb =
     description && typeof description === 'string'
-      ? description
-      : makeBlurb(description);
+      ? makeBlurb(description)
+      : description;
   const defaultTitle = title || site.siteMetadata.title;
   const defaultDescription = blurb || site.siteMetadata.description;
 
