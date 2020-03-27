@@ -49,7 +49,7 @@ const Nav = ({ open }) => {
           </Link>
         </li>
         <li className="site-nav__item site-nav__item--contact">
-          <a className="button button--primary" href={`${urlMain}/contact`}>
+          <a className="button button--primary" href={`${urlMain}/contact-us`}>
             Contact us
           </a>
         </li>
