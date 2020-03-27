@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "prisma.vscode-graphql",
+    "editorconfig.editorconfig",
+    "coenraads.bracket-pair-colorizer",
+    "aaron-bond.better-comments",
+    "esbenp.prettier-vscode",
+    "tombonnike.vscode-status-bar-format-toggle"
+  ],
+  "unwantedRecommendations": []
+}
