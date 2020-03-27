@@ -15,6 +15,8 @@ module.exports = {
     title: website.defaultTitle,
     description: website.defaultDescription,
   },
+  urlMain: '//radically.digital',
+  urlTransitioning: '//insights.radically.digital',
   /* Plugins */
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -32,7 +34,7 @@ module.exports = {
         formatter: require('eslint-formatter-friendly'),
         cache: DEVELOPMENT,
         configFile: path.resolve(__dirname, '.eslintrc'),
-      }
-    }
+      },
+    },
   ],
 };

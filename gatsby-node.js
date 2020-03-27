@@ -10,29 +10,32 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   return graphql(
     `
-    {
-      allPrismicPost {
-        totalCount
-        edges {
-          node {
-            uid
+      {
+        allPrismicPost {
+          totalCount
+          edges {
+            node {
+              uid
+            }
           }
         }
       }
-    }
     `
-  ).then((result) => {
+  ).then(result => {
     if (result.errors) {
-      reporter.panicOnBuild('Error while running GraphQL query:', result.errors);
+      reporter.panicOnBuild(
+        'Error while running GraphQL query:',
+        result.errors
+      );
     }
 
-    // Create blog posts pages
+    // Create inights posts pages
     const posts = result.data.allPrismicPost.edges;
     const totalCount = result.data.allPrismicPost.totalCount;
 
-    posts.forEach((post) => {
+    posts.forEach(post => {
       createPage({
-        path: `/post/${post.node.uid}`,
+        path: `/insights/${post.node.uid}`,
         component: postTemplate,
         context: {
           uid: post.node.uid,
@@ -40,7 +43,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     });
 
-    // Create blog post list pages
+    // Create inights post list pages
     const numPages = Math.ceil(totalCount / postsPerPage);
 
     Array.from({ length: numPages }).forEach((_, i) => {
@@ -49,7 +52,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const currentPage = i + 1;
 
       createPage({
-        path: i === 0 ? '/blog/' : `/blog/${i + 1}`,
+        path: i === 0 ? '/insights/' : `/insights/${i + 1}`,
         component: postsTemplate,
         context: {
           limit,
