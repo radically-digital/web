@@ -1,5 +1,6 @@
 /* eslint-disable quotes */
 import React from 'react';
+import QuoteForm from '../components/QuoteForm';
 
 import Layout from '../components/Layout';
 
@@ -54,6 +55,7 @@ const Quote = () => (
     <section className="page-title">
       <div className="page-title__container">
         <h1 className="page-title__heading">Quote</h1>
+        <QuoteForm questions={questions}/>
       </div>
     </section>
   </Layout>
