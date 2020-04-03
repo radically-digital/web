@@ -48,6 +48,11 @@ const Nav = ({ open }) => {
             Insights
           </Link>
         </li>
+        <li className="site-nav__item">
+          <Link className="site-nav__link" to="/quote">
+            Quote
+          </Link>
+        </li>
         <li className="site-nav__item site-nav__item--contact">
           <a className="button button--primary" href={`${urlMain}/contact-us`}>
             Contact us
