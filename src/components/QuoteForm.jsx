@@ -1,18 +1,19 @@
+/* eslint-disable no-console */
 import React, { useState } from 'react';
 
-const CheckboxComponent = () => <p>Checkbox.</p>;
-const TextComponent = () => <p>Text.</p>;
+// const CheckboxComponent = () => <p>Checkbox.</p>;
+// const TextComponent = () => <p>Text.</p>;
 
-const typeMapping = {
-  checkbox: <CheckboxComponent />,
-  text: <TextComponent />,
-};
+// const typeMapping = {
+//   checkbox: <CheckboxComponent />,
+//   text: <TextComponent />,
+// };
 
 const QuoteForm = ({ questions }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [formState, setFormState] = useState({});
   const currentQuestion = questions[currentQuestionIndex];
-  const Component = typeMapping[currentQuestion.type];
+  // const Component = typeMapping[currentQuestion.type];
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -37,6 +38,24 @@ const QuoteForm = ({ questions }) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <label>
+        {currentQuestion.question}
+        <input
+          onChange={e => {
+            setFormState({
+              ...formState,
+              [`question_${[currentQuestionIndex]}`]: e.target.value,
+            });
+          }}
+        />
+
+        <button
+          onClick={() => setCurrentQuestionIndex(currentQuestionIndex + 1)}
+        >
+          Progress
+        </button>
+      </label>
+      {/* <Component /> */}
       <input type="submit" value="Submit" />
     </form>
   );
