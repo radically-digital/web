@@ -1,19 +1,50 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
 
-// const CheckboxComponent = () => <p>Checkbox.</p>;
-// const TextComponent = () => <p>Text.</p>;
+const CheckboxComponent = () => <p>Checkbox.</p>;
+const TextComponent = () => <p>Text.</p>;
 
-// const typeMapping = {
-//   checkbox: <CheckboxComponent />,
-//   text: <TextComponent />,
-// };
+const ButtonComponent = ({ options, question, handleChange }) => (
+  <div>
+    <p>{question}</p>
+    {options.map(option => (
+      <label key={option}>
+        {option}
+        <input onChange={handleChange(option)} value={option} type="radio" />
+      </label>
+    ))}
+  </div>
+);
+
+const typeMapping = ({ options, question, handleChange }) => {
+  return {
+    checkbox: <CheckboxComponent />,
+    text: <TextComponent />,
+    button: (
+      <ButtonComponent
+        options={options}
+        question={question}
+        handleChange={handleChange}
+      />
+    ),
+  };
+};
 
 const QuoteForm = ({ questions }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [formState, setFormState] = useState({});
   const currentQuestion = questions[currentQuestionIndex];
-  // const Component = typeMapping[currentQuestion.type];
+
+  const handleChange = value => e =>
+    setFormState({ ...formState, [currentQuestionIndex]: value });
+
+  const Component = typeMapping({
+    handleChange,
+    options: currentQuestion.options,
+    question: currentQuestion.question,
+  })[currentQuestion.type];
+
+  console.log(Component);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -38,24 +69,10 @@ const QuoteForm = ({ questions }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        {currentQuestion.question}
-        <input
-          onChange={e => {
-            setFormState({
-              ...formState,
-              [`question_${[currentQuestionIndex]}`]: e.target.value,
-            });
-          }}
-        />
-
-        <button
-          onClick={() => setCurrentQuestionIndex(currentQuestionIndex + 1)}
-        >
-          Progress
-        </button>
-      </label>
-      {/* <Component /> */}
+      {Component}
+      <button onClick={() => setCurrentQuestionIndex(currentQuestionIndex + 1)}>
+        Progress
+      </button>
       <input type="submit" value="Submit" />
     </form>
   );
