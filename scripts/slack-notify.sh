@@ -4,8 +4,8 @@ SLACK_CHANNEL="#project-rad-website"
 SLACK_DEPLOY_BOT_NAME="Oh Ship!"
 ARTIFACTS_URL="https://app.circleci.com/jobs/github/radically-digital/web"
 
-RAND_MOJI_PASS=$(sort -R ./rand-moji-pass.txt | head -n1)
-RAND_MOJI_FAIL=$(sort -R ./rand-moji-fail.txt | head -n1)
+RAND_MOJI_PASS=$(sort -R ./scripts/rand-moji-pass.txt | head -n1)
+RAND_MOJI_FAIL=$(sort -R ./scripts/rand-moji-fail.txt | head -n1)
 
 function func_deploy_fail() {
   curl -X POST \
