@@ -1,5 +1,5 @@
 #! /usr/bin/env sh
-SLACK_URL="https://hooks.slack.com/services/TKCGD1A1Z/BPA7E3A7K"
+SLACK_URL="https://hooks.slack.com/services/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"
 SLACK_CHANNEL="#project-rad-website"
 SLACK_DEPLOY_BOT_NAME="Oh Ship!"
 ARTIFACTS_URL="https://app.circleci.com/jobs/github/radically-digital/web"
