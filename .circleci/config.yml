@@ -50,7 +50,7 @@ jobs:
       - run:
           name: Run ESLint
           command: npm run eslint:check
-  deploy-gh:
+  deploy:
     executor: node
     steps:
       - checkout
@@ -58,9 +58,16 @@ jobs:
       - run: git config user.email "circle.ci@not-a-git.user"
       - run: git config user.name "CircleCI"
       - run: npm run deploy
+      - run:
+          name: Notify the team
+          when: on_success
+          command: sh scripts/slack-notify.sh DEPLOY_PASS
+      - run:
+          name: Notify the team
+          when: on_fail
+          command: sh scripts/slack-notify.sh DEPLOY_FAIL
 
 workflows:
-  version: 2.1
   test:
     jobs:
       - install:
@@ -83,7 +90,7 @@ workflows:
       - lint:
           requires:
             - install
-      - deploy-gh:
+      - deploy:
           requires:
             - lint
             - install

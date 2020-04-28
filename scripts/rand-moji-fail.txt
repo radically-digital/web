@@ -1,0 +1,13 @@
+:exploding_head:
+:man-facepalming:
+:man-shrugging:
+:thinking_face:
+:male_zombie:
+:male_vampire:
+:woman-wearing-turban:
+:monkey:
+:bat:
+:no_bell:
+:no_entry_sign:
+:back:
+:x:
