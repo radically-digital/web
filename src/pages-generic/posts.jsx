@@ -87,7 +87,7 @@ const Posts = ({ data, pageContext }) => {
           </ul>
         </div>
 
-        <Paginator pageContext={pageContext} />
+        <Paginator {...pageContext} />
       </section>
     </Layout>
   )

@@ -53,7 +53,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const currentPage = i + 1
 
       createPage({
-        path: i === 0 ? "/insights/" : `/insights/${i + 1}`,
+        path: i === 0 ? "/insights" : `/insights/${i + 1}`,
         component: postsTemplate,
         context: {
           limit,
