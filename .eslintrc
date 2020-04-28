@@ -24,11 +24,13 @@
     "graphql": true
   },
   "rules": {
+    "semi": ["error", "never"],
+    "comma-dangle": ["error", "always-multiline"],
     "no-console": ["error", {"allow":["error", "warn", "info"]}],
     "no-multiple-empty-lines": ["warn", {"max": 1}],
     "no-undef": 2,
     "no-unused-vars": "warn",
-    "quotes": ["error", "single"],
+    "quotes": ["error", "double"],
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
     "react/no-render-return-value": 0,

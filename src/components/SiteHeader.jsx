@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import React, { useState } from "react"
+import { useStaticQuery, graphql } from "gatsby"
 
-import RDLogo from '../assets/logos/lock-up_wide-gradient.svg';
+import RDLogo from "../assets/logos/lock-up_wide-gradient.svg"
 
-import Nav from './Nav';
-import NavButton from './NavButton';
+import Nav from "./Nav"
+import NavButton from "./NavButton"
 
 const query = graphql`
   query {
@@ -15,15 +15,15 @@ const query = graphql`
       }
     }
   }
-`;
+`
 
 const SiteHeader = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
   const {
     site: {
       siteMetadata: { urlMain },
     },
-  } = useStaticQuery(query);
+  } = useStaticQuery(query)
 
   return (
     <header className="site-header">
@@ -41,7 +41,7 @@ const SiteHeader = () => {
 
       <Nav open={open} />
     </header>
-  );
-};
+  )
+}
 
-export default SiteHeader;
+export default SiteHeader

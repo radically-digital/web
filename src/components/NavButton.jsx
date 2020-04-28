@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react"
 
 const NavButton = ({ open, setOpen }) => {
   return (
@@ -6,6 +6,6 @@ const NavButton = ({ open, setOpen }) => {
       <i className="stack-menu" />
     </button>
   )
-};
+}
 
-export default NavButton;
+export default NavButton

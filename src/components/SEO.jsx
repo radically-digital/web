@@ -1,8 +1,8 @@
-import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import Helmet from 'react-helmet';
-import PropTypes from 'prop-types';
-import { makeBlurb } from '../utils/makeBlurb';
+import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import Helmet from "react-helmet"
+import PropTypes from "prop-types"
+import { makeBlurb } from "../utils/makeBlurb"
 
 const query = graphql`
   query {
@@ -13,7 +13,7 @@ const query = graphql`
       }
     }
   }
-`;
+`
 
 const SEO = ({
   title,
@@ -22,13 +22,13 @@ const SEO = ({
   metadataTitle,
   altTitle,
 }) => {
-  const { site } = useStaticQuery(query);
+  const { site } = useStaticQuery(query)
   const blurb =
-    description && typeof description === 'string'
+    description && typeof description === "string"
       ? makeBlurb(description)
-      : description;
-  const defaultTitle = title || site.siteMetadata.title;
-  const defaultDescription = blurb || site.siteMetadata.description;
+      : description
+  const defaultTitle = title || site.siteMetadata.title
+  const defaultDescription = blurb || site.siteMetadata.description
 
   return (
     <Helmet>
@@ -53,8 +53,8 @@ const SEO = ({
         content={metadataTitle || altTitle || defaultTitle}
       />
     </Helmet>
-  );
-};
+  )
+}
 
 SEO.propTypes = {
   title: PropTypes.string.isRequired,
@@ -65,6 +65,6 @@ SEO.propTypes = {
   metadataDescription: PropTypes.string,
   altTitle: PropTypes.string, // override the page title
   heroImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-};
+}
 
-export default SEO;
+export default SEO

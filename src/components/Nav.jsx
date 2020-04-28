@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import { useStaticQuery, graphql } from 'gatsby';
+import React from "react"
+import { Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 
 const query = graphql`
   query {
@@ -11,14 +11,14 @@ const query = graphql`
       }
     }
   }
-`;
+`
 
 const Nav = ({ open }) => {
   const {
     site: {
       siteMetadata: { urlMain },
     },
-  } = useStaticQuery(query);
+  } = useStaticQuery(query)
 
   return (
     <nav className="site-nav" open={open}>
@@ -55,7 +55,7 @@ const Nav = ({ open }) => {
         </li>
       </ul>
     </nav>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav
