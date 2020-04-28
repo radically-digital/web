@@ -61,11 +61,11 @@ jobs:
       - run:
           name: Notify the team
           when: on_success
-          command: sh scripts/slack-notify.sh DEPLOY_PASS
+          command: . scripts/slack-notify.sh DEPLOY_PASS
       - run:
           name: Notify the team
           when: on_fail
-          command: sh scripts/slack-notify.sh DEPLOY_FAIL
+          command: . scripts/slack-notify.sh DEPLOY_FAIL
 
 workflows:
   test:
