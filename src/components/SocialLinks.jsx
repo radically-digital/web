@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react"
 
-import Icon from './Icon';
+import Icon from "./Icon"
 
 const SocialLinks = () => (
   <nav className="social-links">
@@ -32,6 +32,6 @@ const SocialLinks = () => (
       </li>
     </ul>
   </nav>
-);
+)
 
-export default SocialLinks;
+export default SocialLinks
