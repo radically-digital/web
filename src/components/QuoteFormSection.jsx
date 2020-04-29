@@ -8,7 +8,7 @@ import {
   initialState,
   ACTIONS,
   responseObject,
-} from "../pages/quote"
+} from "./QuoteForm"
 
 const ButtonNextQuestion = ({ outputState, questionState }) => (
   <button
