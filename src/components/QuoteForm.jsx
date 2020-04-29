@@ -11,11 +11,9 @@ export const ACTIONS = {
 
 export const initialState = {}
 
-export const responseObject = (identifier, updatedResponse) => {
-  const update = { ...updatedResponse }
-  const id = hashFromString(identifier)
-  return { [id]: update }
-}
+export const responseObject = (identifier, updatedResponse) => ({
+  [hashFromString(identifier)]: updatedResponse,
+})
 
 export const complexStateReducer = (state, action) => {
   switch (action.type) {
