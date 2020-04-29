@@ -2,7 +2,7 @@ import React from "react"
 
 import Layout from "../../components/Layout"
 import Hero from "../../components/Hero"
-import { QuoteForm } from "./QuoteForm"
+import { QuoteForm } from "../../components/QuoteForm"
 
 const Quote = () => (
   <Layout
