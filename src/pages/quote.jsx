@@ -165,6 +165,7 @@ const FormSection = ({ question, options, type, outputState }) => {
 
 const Quote = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
+  const [questionIndex, setQuestionIndex] = useState(0)
 
   return (
     <Layout
@@ -177,22 +178,28 @@ const Quote = () => {
       </Hero>
 
       {JSON.stringify({ state })}
+      {JSON.stringify({ questionIndex })}
       <form onSubmit={(e) => e.preventDefault()}>
-        {questions.map((question) => (
-          <FormSection
-            key={question.question}
-            {...question}
-            outputState={(response) =>
-              dispatch({
-                type: ACTIONS.ADD_RESPONSE,
-                payload: responseObject(question.question, {
-                  response,
-                  question: question.question,
-                }),
-              })
-            }
-          />
-        ))}
+        {questions.map(
+          (question, index) =>
+            questionIndex >= index && (
+              <FormSection
+                key={question.question}
+                {...question}
+                outputState={(response) => {
+                  console.log("yes")
+                  dispatch({
+                    type: ACTIONS.ADD_RESPONSE,
+                    payload: responseObject(question.question, {
+                      response,
+                      question: question.question,
+                    }),
+                  })
+                  setQuestionIndex(index + 1)
+                }}
+              />
+            )
+        )}
         <button>Submit</button>
       </form>
     </Layout>
