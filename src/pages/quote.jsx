@@ -6,6 +6,7 @@ import Hero from "../components/Hero"
 import { questions } from "./questions"
 import QUESTION_TYPES from "./QUESTION_TYPES.json"
 import { hashFromString } from "../utils/hash-from-string"
+import { sub } from "date-fns"
 
 const ACTIONS = {
   ADD_RESPONSE: "ADD_RESPONSE",
@@ -30,25 +31,6 @@ function reducer(state, action) {
 
 const FormSection = ({ question, options, type, outputState }) => {
   const [simpleState, setSimpleState] = useState("")
-
-  if (type === QUESTION_TYPES.BUTTON) {
-    return (
-      <fieldset>
-        <legend>{question}</legend>
-        {options.map((option) => (
-          <label key={option}>
-            <button
-              onClick={() => {
-                outputState(true)
-              }}
-            >
-              {option}
-            </button>
-          </label>
-        ))}
-      </fieldset>
-    )
-  }
 
   if (type === QUESTION_TYPES.CHECKBOX) {
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -166,6 +148,18 @@ const FormSection = ({ question, options, type, outputState }) => {
 const Quote = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const [questionIndex, setQuestionIndex] = useState(0)
+  const [submit, setSubmit] = useState(false)
+
+  useEffect(() => {
+    if (questionIndex === questions.length) {
+      console.log("submit!", { state })
+      setSubmit(true)
+    }
+  }, [questionIndex])
+
+  if (submit) {
+    return <>Thanks!</>
+  }
 
   return (
     <Layout
@@ -177,17 +171,13 @@ const Quote = () => {
         <h1 className="hero__heading">Get a quote</h1>
       </Hero>
 
-      {JSON.stringify({ state })}
-      {JSON.stringify({ questionIndex })}
       <form onSubmit={(e) => e.preventDefault()}>
         {questions.map(
           (question, index) =>
             questionIndex >= index && (
               <FormSection
                 key={question.question}
-                {...question}
                 outputState={(response) => {
-                  console.log("yes")
                   dispatch({
                     type: ACTIONS.ADD_RESPONSE,
                     payload: responseObject(question.question, {
@@ -197,10 +187,10 @@ const Quote = () => {
                   })
                   setQuestionIndex(index + 1)
                 }}
+                {...question}
               />
             )
         )}
-        <button>Submit</button>
       </form>
     </Layout>
   )

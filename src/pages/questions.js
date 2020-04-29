@@ -2,10 +2,10 @@ import QUESTION_TYPES from "./QUESTION_TYPES.json"
 
 export const questions = [
   {
-    type: QUESTION_TYPES.BUTTON,
-    options: ["Yes"],
+    type: QUESTION_TYPES.RADIO,
     question:
       "In under 60 seconds and just a few Qs, you can help us understand your challenge. Sound good?",
+    options: ["Yes"],
   },
   {
     type: QUESTION_TYPES.CHECKBOX,
