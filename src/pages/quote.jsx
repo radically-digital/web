@@ -6,7 +6,6 @@ import Hero from "../components/Hero"
 import { questions } from "./questions"
 import QUESTION_TYPES from "./QUESTION_TYPES.json"
 import { hashFromString } from "../utils/hash-from-string"
-import { sub } from "date-fns"
 
 const ACTIONS = {
   ADD_RESPONSE: "ADD_RESPONSE",
