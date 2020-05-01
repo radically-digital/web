@@ -1,5 +1,5 @@
 #! /usr/bin/env sh
-SLACK_URL="https://hooks.slack.com/services/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"
+SLACK_URL="https://hooks.slack.com/services/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"
 SLACK_CHANNEL="#project-rad-website"
 SLACK_DEPLOY_BOT_NAME="Oh Ship!"
 ARTIFACTS_URL="https://app.circleci.com/jobs/github/radically-digital/web"
@@ -26,6 +26,10 @@ function func_deploy_pass() {
     \"icon_emoji\": \"$RAND_MOJI_PASS\"}" \
     "$SLACK_URL"
 }
+
+if [ ! -z "$2" ]; then
+  SLACK_CHANNEL=$2
+fi
 
 if [ "$1" = "DEPLOY_FAIL" ]; then
   func_deploy_fail
