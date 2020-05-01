@@ -53,10 +53,11 @@ jobs:
     steps:
       - checkout
       - <<: *restore_cache
-      - run: npm run build
+      - run: |
+          OVERWRITE_URL_TRANSITIONING="https://dev.radically.digital" npm run build
       - run: |
           echo "User-agent: * Disallow: /" > public/robots.txt
-      - run: npm run build
+          echo "dev.radically.digital" > public/CNAME
       - run: $(npm bin)/surge public dev.radically.digital
       - run:
           name: Notify the team

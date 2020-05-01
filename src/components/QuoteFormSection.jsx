@@ -1,7 +1,7 @@
 import React, { useReducer, useState, useEffect } from "react"
 import PropTypes from "prop-types"
 
-import QUESTION_TYPES from "../pages/quote/QUESTION_TYPES.json"
+import QUESTION_TYPES from "../../config/QUESTION_TYPES.json"
 import { hashFromString } from "../utils/hash-from-string"
 import {
   complexStateReducer,

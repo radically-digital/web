@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import React, { useReducer, useState, useEffect } from "react"
 
-import { questions } from "../pages/quote/questions"
+import { questions } from "../../config/questions"
 import { FormSection } from "./QuoteFormSection"
 import { hashFromString } from "../utils/hash-from-string"
 

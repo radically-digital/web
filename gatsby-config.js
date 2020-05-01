@@ -9,12 +9,11 @@ const website = require("./config/website")
 const DEVELOPMENT = process.env.NODE_ENV === "development"
 
 module.exports = {
-  pathPrefix: "/web",
   siteMetadata: {
     title: website.defaultTitle,
     description: website.defaultDescription,
     urlMain: "https://radically.digital",
-    urlTransitioning: "https://insights.radically.digital",
+    urlTransitioning: process.env.OVERWRITE_URL_TRANSITIONING || "https://insights.radically.digital",
   },
   plugins: [
     "gatsby-plugin-react-helmet",
