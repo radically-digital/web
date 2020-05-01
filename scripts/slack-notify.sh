@@ -1,5 +1,5 @@
 #! /usr/bin/env sh
-SLACK_URL="https://hooks.slack.com/services/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"
+# SLACK_URL needs to be set in the env - slack will revoke it if it manages to find it
 SLACK_CHANNEL="#project-rad-website"
 SLACK_DEPLOY_BOT_NAME="Oh Ship!"
 ARTIFACTS_URL="https://app.circleci.com/jobs/github/radically-digital/web"
@@ -27,6 +27,16 @@ function func_deploy_pass() {
     "$SLACK_URL"
 }
 
+if [ -z "$SLACK_URL" ]; then
+  echo "You'll need to specify a SLACK_URL in your env"
+  exit 1
+fi
+
+if [ -z "$1" ]; then
+  echo "You'll need to specify a PASS or FAIL argument"
+  exit 1
+fi
+
 if [ ! -z "$2" ]; then
   SLACK_CHANNEL=$2
 fi
@@ -37,9 +47,4 @@ fi
 
 if [ "$1" = "DEPLOY_PASS" ]; then
   func_deploy_pass
-fi
-
-if [ -z "$1" ]; then
-  echo "You'll need to specify a PASS or FAIL argument"
-  exit 1
 fi
