@@ -1,66 +1,67 @@
-const path = require('path');
+const path = require("path")
 
-const { postsPerPage } = require('./config/website');
+const { postsPerPage } = require("./config/website")
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions;
+  const { createPage } = actions
 
-  const postTemplate = path.resolve('src/pages/post.jsx');
-  const postsTemplate = path.resolve('src/pages/posts.jsx');
+  const postTemplate = path.resolve("src/pages-generic/post.jsx")
+  const postsTemplate = path.resolve("src/pages-generic/posts.jsx")
 
   return graphql(
     `
       {
-        allPrismicPost {
-          totalCount
-          edges {
-            node {
-              uid
+        prismic {
+          allPosts {
+            edges {
+              node {
+                _meta {
+                  uid
+                }
+              }
             }
+            totalCount
           }
         }
       }
     `
-  ).then(result => {
+  ).then((result) => {
     if (result.errors) {
-      reporter.panicOnBuild(
-        'Error while running GraphQL query:',
-        result.errors
-      );
+      reporter.panicOnBuild("Error while running GraphQL query:", result.errors)
     }
 
-    // Create inights posts pages
-    const posts = result.data.allPrismicPost.edges;
-    const totalCount = result.data.allPrismicPost.totalCount;
+    const posts = result.data.prismic.allPosts.edges
+    const totalCount = result.data.prismic.allPosts.totalCount
 
-    posts.forEach(post => {
+    posts.forEach((post) => {
+      const uid = post.node._meta.uid
+
       createPage({
-        path: `/insights/${post.node.uid}`,
+        path: `/insights/${uid}`,
         component: postTemplate,
         context: {
-          uid: post.node.uid,
+          uid,
         },
-      });
-    });
+      })
+    })
 
-    // Create inights post list pages
-    const numPages = Math.ceil(totalCount / postsPerPage);
+    const numPages = Math.ceil(totalCount / postsPerPage)
 
     Array.from({ length: numPages }).forEach((_, i) => {
-      const limit = postsPerPage;
-      const skip = i * postsPerPage;
-      const currentPage = i + 1;
+      const limit = postsPerPage
+      const skip = i * postsPerPage
+      const currentPage = i + 1
 
       createPage({
-        path: i === 0 ? '/insights/' : `/insights/${i + 1}`,
+        path: i === 0 ? "/insights" : `/insights/${i + 1}`,
         component: postsTemplate,
         context: {
           limit,
-          skip,
+          skip: limit - skip,
           numPages,
           currentPage,
         },
-      });
-    });
-  });
-};
+      })
+    })
+  })
+}

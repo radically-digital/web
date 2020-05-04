@@ -1,24 +1,69 @@
-import React, { useState } from 'react';
+/* eslint-disable no-console */
+import React, { useReducer, useState, useEffect } from "react"
 
-const CheckboxComponent = () => <p>Checkbox.</p>;
-const TextComponent = () => <p>Text.</p>;
+import { questions } from "../../config/questions"
+import { FormSection } from "./QuoteFormSection"
+import { hashFromString } from "../utils/hash-from-string"
 
-const typeMapping = {
-  checkbox: <CheckboxComponent/>,
-  text: <TextComponent/>
-};
+export const ACTIONS = {
+  ADD_RESPONSE: "ADD_RESPONSE",
+}
 
-const QuoteForm = ({ questions }) => {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const currentQuestion = questions[currentQuestionIndex];
-  const Component = () => typeMapping[currentQuestion.type];
+export const initialState = {}
+
+export const responseObject = (identifier, updatedResponse) => ({
+  [hashFromString(identifier)]: updatedResponse,
+})
+
+export const complexStateReducer = (state, action) => {
+  switch (action.type) {
+    case ACTIONS.ADD_RESPONSE:
+      return { ...state, ...action.payload }
+    default:
+      throw new Error()
+  }
+}
+
+export const QuoteForm = () => {
+  const [questionIndex, setQuestionIndex] = useState(0)
+  const [submit, setSubmit] = useState(false)
+  const [stateForm, dispatchFormAction] = useReducer(
+    complexStateReducer,
+    initialState
+  )
+
+  useEffect(() => {
+    if (questionIndex === questions.length) {
+      console.log("submit!", { stateForm })
+      setSubmit(true)
+    }
+  }, [questionIndex])
+
+  if (submit) {
+    return <>Thanks!</>
+  }
+
   return (
-    <form>
-      <input>
-      </input>
-      <Component/>
+    <form onSubmit={e => e.preventDefault()}>
+      {questions.map(
+        (question, index) =>
+          questionIndex >= index && (
+            <FormSection
+              key={question.question}
+              outputState={response => {
+                dispatchFormAction({
+                  type: ACTIONS.ADD_RESPONSE,
+                  payload: responseObject(question.question, {
+                    response,
+                    question: question.question,
+                  }),
+                })
+                setQuestionIndex(index + 1)
+              }}
+              {...question}
+            />
+          )
+      )}
     </form>
-  );
-};
-
-export default QuoteForm;
+  )
+}

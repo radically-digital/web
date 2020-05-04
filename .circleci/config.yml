@@ -8,8 +8,6 @@ executors:
         default: "12"
     docker:
       - image: circleci/node:<< parameters.image >>
-        environment:
-          TERM: xterm
 
 aliases:
   restore_cache: &restore_cache
@@ -50,7 +48,27 @@ jobs:
       - run:
           name: Run ESLint
           command: npm run eslint:check
-  deploy-gh:
+  deploy-dev:
+    executor: node
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - run: |
+          OVERWRITE_URL_TRANSITIONING="https://dev.radically.digital" npm run build
+      - run: |
+          echo "User-agent: * Disallow: /" > public/robots.txt
+          echo "dev.radically.digital" > public/CNAME
+      - run: $(npm bin)/surge public dev.radically.digital
+      - run:
+          name: Notify the team
+          when: on_success
+          command: . scripts/slack-notify.sh DEPLOY_PASS "#project-rad-website-devs"
+      - run:
+          name: Notify the team
+          when: on_fail
+          command: . scripts/slack-notify.sh DEPLOY_FAIL "#project-rad-website-devs"
+
+  deploy-prod:
     executor: node
     steps:
       - checkout
@@ -58,9 +76,16 @@ jobs:
       - run: git config user.email "circle.ci@not-a-git.user"
       - run: git config user.name "CircleCI"
       - run: npm run deploy
+      - run:
+          name: Notify the team
+          when: on_success
+          command: . scripts/slack-notify.sh DEPLOY_PASS
+      - run:
+          name: Notify the team
+          when: on_fail
+          command: . scripts/slack-notify.sh DEPLOY_FAIL
 
 workflows:
-  version: 2.1
   test:
     jobs:
       - install:
@@ -69,11 +94,26 @@ workflows:
               ignore:
                 - gh-pages
                 - master
+                - develop
       - lint:
           requires:
             - install
 
-  build:
+  build-dev:
+    jobs:
+      - install:
+          filters:
+            branches:
+              only:
+                - develop
+      - lint:
+          requires:
+            - install
+      - deploy-dev:
+          requires:
+            - lint
+
+  build-prod:
     jobs:
       - install:
           filters:
@@ -83,7 +123,6 @@ workflows:
       - lint:
           requires:
             - install
-      - deploy-gh:
+      - deploy-prod:
           requires:
             - lint
-            - install
