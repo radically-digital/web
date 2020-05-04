@@ -108,3 +108,6 @@ public/
 .idea
 *.sublime-project
 *.sublime-workspace
+
+# Linaria
+.linaria-cache
