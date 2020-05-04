@@ -13,7 +13,9 @@ module.exports = {
     title: website.defaultTitle,
     description: website.defaultDescription,
     urlMain: "https://radically.digital",
-    urlTransitioning: process.env.OVERWRITE_URL_TRANSITIONING || "https://insights.radically.digital",
+    urlTransitioning:
+      process.env.OVERWRITE_URL_TRANSITIONING ||
+      "https://insights.radically.digital",
   },
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -34,5 +36,6 @@ module.exports = {
         configFile: path.resolve(__dirname, ".eslintrc"),
       },
     },
+    "gatsby-plugin-linaria",
   ],
 }
