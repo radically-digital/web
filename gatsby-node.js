@@ -6,6 +6,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
   const postTemplate = path.resolve("src/pages-generic/post.jsx")
+  const insightTemplate = path.resolve("src/pages-generic/insight.jsx")
   const postsTemplate = path.resolve("src/pages-generic/posts.jsx")
 
   return graphql(
@@ -13,6 +14,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       {
         prismic {
           allPosts {
+            edges {
+              node {
+                _meta {
+                  uid
+                }
+              }
+            }
+            totalCount
+          }
+          allInsights {
             edges {
               node {
                 _meta {
@@ -31,7 +42,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
 
     const posts = result.data.prismic.allPosts.edges
-    const totalCount = result.data.prismic.allPosts.totalCount
+    const insights = result.data.prismic.allInsights.edges
+    const totalCount = result.data.prismic.allInsights.totalCount
 
     posts.forEach((post) => {
       const uid = post.node._meta.uid
@@ -39,6 +51,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       createPage({
         path: `/insights/${uid}`,
         component: postTemplate,
+        context: {
+          uid,
+        },
+      })
+    })
+
+    insights.forEach((insight) => {
+      const uid = insight.node._meta.uid
+
+      createPage({
+        path: `/insights/${uid}`,
+        component: insightTemplate,
         context: {
           uid,
         },
