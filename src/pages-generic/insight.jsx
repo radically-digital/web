@@ -46,15 +46,26 @@ const Insight = ({ data }) => {
   const { publishDate, title, category, author, heroImage } = xformer(data)
   const { alt, url } = heroImage
 
+  const titlePlainText = RichText.asText(title)
+  const titleTextFormatted = title.map((line) => (
+    <>
+      {line.text}
+      <br />
+    </>
+  ))
+
   return (
-    <Layout pageClass="blog-post" title={title} description={"Placeholder"}>
+    <Layout
+      pageClass="blog-post"
+      title={titlePlainText}
+      description={"Placeholder"}
+    >
       <section>
         <PostContainer>
           <Meta>
             <MetaContent>{category}</MetaContent>
           </Meta>
-          <Title>{title}</Title>
-
+          <Title>{titleTextFormatted}</Title>
           <Meta>
             <MetaContent>
               <span>{publishDate}</span>
@@ -70,15 +81,20 @@ const Insight = ({ data }) => {
 }
 
 const xformer = (data) => {
-  const header = data.prismic.insight.body.find(
-    (x) => x.type === "insight_header"
-  )
+  const {
+    category_tag,
+    title,
+    author_tag,
+    timestamp,
+    hero_image,
+  } = data.prismic.insight
+
   return {
-    category: header.primary.category_tag.category_tag,
-    title: RichText.asText(header.primary.title),
-    author: header.primary.author_tag.author_tag,
-    publishDate: timeAgo(header.primary.timestamp),
-    heroImage: header.primary.hero_image,
+    category: category_tag.category_tag,
+    title: title,
+    author: author_tag.author_tag,
+    publishDate: timeAgo(timestamp),
+    heroImage: hero_image,
   }
 }
 
@@ -86,29 +102,21 @@ export const pageQuery = graphql`
   query InsightById($uid: String!) {
     prismic {
       insight(uid: $uid, lang: "en-gb") {
-        body {
-          ... on PRISMIC_InsightBodyInsight_header {
-            type
-            primary {
-              category_tag {
-                __typename
-                ... on PRISMIC_Category_tag {
-                  category_tag
-                }
-              }
-              title
-              timestamp
-              author_tag {
-                __typename
-                ... on PRISMIC_Author_tag {
-                  author_tag
-                }
-              }
-              hero_image
-            }
-            label
+        category_tag {
+          __typename
+          ... on PRISMIC_Category_tag {
+            category_tag
           }
         }
+        author_tag {
+          __typename
+          ... on PRISMIC_Author_tag {
+            author_tag
+          }
+        }
+        title
+        timestamp
+        hero_image
         _meta {
           firstPublicationDate
           uid
