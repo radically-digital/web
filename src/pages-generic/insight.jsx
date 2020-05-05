@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import { styled } from "linaria/react"
 import Layout from "../components/Layout"
 import { RichText } from "prismic-reactjs"
-import { humanDate } from "../utils/human-date"
+import { timeAgo } from "../utils/human-date"
 
 const PostContainer = styled.div`
   font-family: Poppins;
@@ -77,7 +77,7 @@ const xformer = (data) => {
     category: header.primary.category_tag.category_tag,
     title: RichText.asText(header.primary.title),
     author: header.primary.author_tag.author_tag,
-    publishDate: humanDate(header.primary.timestamp),
+    publishDate: timeAgo(header.primary.timestamp),
     heroImage: header.primary.hero_image,
   }
 }
