@@ -31,10 +31,10 @@ const Meta = styled.div`
 const MetaContent = styled.p`
   margin: 1rem 0rem;
   font-size: 1.3rem;
-  & > * {
-    margin: 0.3rem;
-    font-size: 1.3rem;
-  }
+`
+
+const SpanSpacing = styled.SpanSpacing`
+  margin: 0.6rem;
 `
 
 const HeroImage = styled.img`
@@ -68,9 +68,9 @@ const Insight = ({ data }) => {
           <Title>{titleTextFormatted}</Title>
           <Meta>
             <MetaContent>
-              <span>{publishDate}</span>
-              <span>•</span>
-              <span>{author}</span>
+              {publishDate}
+              <SpanSpacing>•</SpanSpacing>
+              {author}
             </MetaContent>
           </Meta>
           <HeroImage src={url} alt={alt} />
