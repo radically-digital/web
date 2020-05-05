@@ -1,5 +1,3 @@
-export const theme = {
-  font: {
-    fontFamily: "'Poppins', sans-serif",
-  },
+export const fonts = {
+  fontFamily: "'Poppins', sans-serif",
 }
