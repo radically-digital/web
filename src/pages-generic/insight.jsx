@@ -8,11 +8,10 @@ import { fonts } from "../styles/linaria/theme"
 
 const PostContainer = styled.div`
   font-family: ${fonts.fontFamily};
-  margin: 0 auto;
-  padding: 2.7rem 4.7rem;
-  @media screen and (min-width: 640px) {
-    padding: 5.2rem 0;
-    width: 80%;
+  margin: 5.2rem auto;
+  width: 80%;
+  @media screen and (max-width: 640px) {
+    width: 100%;
   }
 `
 
@@ -20,7 +19,13 @@ const Title = styled.h1`
   font-size: 8rem;
   font-weight: bold;
   text-align: center;
-  margin: 1rem 0rem;
+  margin: 1rem 1rem;
+  @media only screen and (max-width: 768px) {
+    font-size: 4rem;
+  }
+  @media screen and (max-width: 640px) {
+    font-size: 1.7rem;
+  }
 `
 
 const Meta = styled.div`
@@ -32,6 +37,9 @@ const Meta = styled.div`
 const MetaContent = styled.p`
   margin: 1rem 0rem;
   font-size: 1.3rem;
+  @media screen and (max-width: 640px) {
+    font-size: 0.85rem;
+  }
 `
 
 const SpanSpacing = styled.span`
@@ -41,6 +49,9 @@ const SpanSpacing = styled.span`
 const HeroImage = styled.img`
   margin: 10rem 0rem;
   width: 100%;
+  @media screen and (max-width: 640px) {
+    margin: 5rem 0rem;
+  }
 `
 
 const Insight = ({ data }) => {
