@@ -4,9 +4,10 @@ import { styled } from "linaria/react"
 import Layout from "../components/Layout"
 import { RichText } from "prismic-reactjs"
 import { timeAgo } from "../utils/human-date"
+import { fonts } from "../styles/linaria/theme"
 
 const PostContainer = styled.div`
-  font-family: Poppins;
+  font-family: ${fonts.fontFamily};
   margin: 0 auto;
   padding: 2.7rem 4.7rem;
   @media screen and (min-width: 640px) {
@@ -33,7 +34,7 @@ const MetaContent = styled.p`
   font-size: 1.3rem;
 `
 
-const SpanSpacing = styled.SpanSpacing`
+const SpanSpacing = styled.span`
   margin: 0.6rem;
 `
 
@@ -47,11 +48,11 @@ const Insight = ({ data }) => {
   const { alt, url } = heroImage
 
   const titlePlainText = RichText.asText(title)
-  const titleTextFormatted = title.map((line) => (
-    <>
+  const titleTextFormatted = title.map((line, index) => (
+    <React.Fragment key={index}>
       {line.text}
       <br />
-    </>
+    </React.Fragment>
   ))
 
   return (
