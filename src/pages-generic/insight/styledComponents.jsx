@@ -12,30 +12,32 @@ export const styledComponents = {
     }
   `,
   Title: styled.h1`
-    font-size: ${fonts.fontSize.h1};
+    font-size: ${fonts.fontSize.lg.h1};
     font-weight: ${fonts.fontWeight.bold};
     text-align: center;
     margin: ${spacing(4)};
     ${breakpoints.max.md} {
-      font-size: 6rem;
+      font-size: ${fonts.fontSize.md.h1};
     }
     ${breakpoints.max.sm} {
-      font-size: 4rem;
+      font-size: ${fonts.fontSize.sm.h1};
     }
     ${breakpoints.max.xs} {
-      font-size: 1.7rem;
+      font-size: ${fonts.fontSize.xs.h1};
     }
   `,
   Meta: styled.div`
+    margin: ${spacing(8)} 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    ${breakpoints.max.xs} {
+      margin: ${spacing(4)} 0;
   `,
   MetaContent: styled.p`
-    margin: ${spacing(4)} 0;
-    font-size: 1.3rem;
+    font-size: ${fonts.fontSize.lg.meta};
     ${breakpoints.max.xs} {
-      font-size: 0.85rem;
+      font-size: ${fonts.fontSize.xs.meta};
     }
   `,
   SpanSpacing: styled.span`
@@ -45,7 +47,7 @@ export const styledComponents = {
     margin: ${spacing(15)} 0rem;
     width: 100%;
     ${breakpoints.max.xs} {
-      margin: 5rem 0rem;
+      margin: ${spacing(10)} 0rem;
     }
   `,
 }
