@@ -1,83 +1,45 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { styled } from "linaria/react"
-import Layout from "../components/Layout"
+import Layout from "../../components/Layout"
 import { RichText } from "prismic-reactjs"
-import { timeAgo } from "../utils/human-date"
-import { fonts } from "../styles/linaria/theme"
+import { timeAgo } from "../../utils/human-date"
+import Img from "gatsby-image"
+import { styledComponents } from "./styledComponents"
 
-const PostContainer = styled.div`
-  font-family: ${fonts.fontFamily};
-  margin: 5.2rem auto;
-  width: 80%;
-  @media screen and (max-width: 640px) {
-    width: 100%;
-  }
-`
-
-const Title = styled.h1`
-  font-size: 8rem;
-  font-weight: bold;
-  text-align: center;
-  margin: 1rem 1rem;
-  @media only screen and (max-width: 768px) {
-    font-size: 4rem;
-  }
-  @media screen and (max-width: 640px) {
-    font-size: 1.7rem;
-  }
-`
-
-const Meta = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
-const MetaContent = styled.p`
-  margin: 1rem 0rem;
-  font-size: 1.3rem;
-  @media screen and (max-width: 640px) {
-    font-size: 0.85rem;
-  }
-`
-
-const SpanSpacing = styled.span`
-  margin: 0.6rem;
-`
-
-const HeroImage = styled.img`
-  margin: 10rem 0rem;
-  width: 100%;
-  @media screen and (max-width: 640px) {
-    margin: 5rem 0rem;
-  }
-`
+const {
+  PostContainer,
+  HeroImageContainer,
+  Meta,
+  MetaContent,
+  SpanSpacing,
+  Title,
+} = styledComponents
 
 const Insight = ({ data }) => {
-  const { publishDate, title, category, author, heroImage } = xformer(data)
-  const { alt, url } = heroImage
+  const {
+    publishDate,
+    title,
+    description,
+    category,
+    author,
+    heroImage,
+    heroImageAlt,
+  } = xformer(data)
 
   const titlePlainText = RichText.asText(title)
-  const titleTextFormatted = title.map((line, index) => (
-    <React.Fragment key={index}>
-      {line.text}
-      <br />
-    </React.Fragment>
-  ))
 
   return (
     <Layout
       pageClass="blog-post"
       title={titlePlainText}
-      description={"Placeholder"}
+      description={description}
     >
       <section>
         <PostContainer>
           <Meta>
             <MetaContent>{category}</MetaContent>
           </Meta>
-          <Title>{titleTextFormatted}</Title>
+          <Title>{titlePlainText}</Title>
           <Meta>
             <MetaContent>
               {publishDate}
@@ -85,7 +47,9 @@ const Insight = ({ data }) => {
               {author}
             </MetaContent>
           </Meta>
-          <HeroImage src={url} alt={alt} />
+          <HeroImageContainer>
+            <Img fluid={heroImage} alt={heroImageAlt} />
+          </HeroImageContainer>
         </PostContainer>
       </section>
     </Layout>
@@ -99,6 +63,7 @@ const xformer = (data) => {
     author_tag,
     timestamp,
     hero_image,
+    hero_imageSharp,
   } = data.prismic.insight
 
   return {
@@ -106,7 +71,8 @@ const xformer = (data) => {
     title: title,
     author: author_tag.author_tag,
     publishDate: timeAgo(timestamp),
-    heroImage: hero_image,
+    heroImageAlt: hero_image.alt,
+    heroImage: hero_imageSharp.childImageSharp.fluid,
   }
 }
 
@@ -127,8 +93,16 @@ export const pageQuery = graphql`
           }
         }
         title
+        description
         timestamp
         hero_image
+        hero_imageSharp {
+          childImageSharp {
+            fluid(quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
         _meta {
           firstPublicationDate
           uid
