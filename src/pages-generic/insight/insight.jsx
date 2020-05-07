@@ -60,6 +60,7 @@ const xformer = (data) => {
   const {
     category_tag,
     title,
+    description,
     author_tag,
     timestamp,
     hero_image,
@@ -68,7 +69,8 @@ const xformer = (data) => {
 
   return {
     category: category_tag.category_tag,
-    title: title,
+    title,
+    description,
     author: author_tag.author_tag,
     publishDate: timeAgo(timestamp),
     heroImageAlt: hero_image.alt,
