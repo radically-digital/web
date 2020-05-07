@@ -11,7 +11,7 @@ const Services = () => (
     <section className="page-title">
       <div className="page-title__container">
         <h1 className="page-title__heading">
-          Full-service Agile Design & Development
+          Full-service Agile Design &amp; Development
         </h1>
         <p className="page-title__summary">
           From a team of passionate creators working side-by-side with our
