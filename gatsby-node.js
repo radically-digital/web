@@ -6,7 +6,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
   const postTemplate = path.resolve("src/pages-generic/post.jsx")
-  const insightTemplate = path.resolve("src/pages-generic/insight.jsx")
+  const insightTemplate = path.resolve("src/pages-generic/insight/insight.jsx")
   const postsTemplate = path.resolve("src/pages-generic/posts.jsx")
 
   return graphql(
