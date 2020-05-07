@@ -1,4 +1,14 @@
 const path = require("path")
+var fs = require("fs")
+var dir = "./.cache/caches/gatsby-source-prismic-graphql"
+
+/* Fix for gatsby-source-prismic-graphql bug related to imageSharp
+https://github.com/birkir/gatsby-source-prismic-graphql/issues/162 */
+exports.onPreBootstrap = () => {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir)
+  }
+}
 
 const { postsPerPage } = require("./config/website")
 
@@ -96,12 +106,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
       }
     `
-  ).then(
-    resultCheck({ reporter }).then((result) =>
+  )
+    .then(resultCheck({ reporter }))
+    .then((result) =>
       Promise.all([
         createPosts({ createPage })(result),
         createInsights({ createPage })(result),
       ])
     )
-  )
 }
