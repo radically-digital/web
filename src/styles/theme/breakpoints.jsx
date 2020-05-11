@@ -4,7 +4,7 @@ const values = {
   md: "1024px",
 }
 
-export const breakPointsObj = { values, max: {}, min: {} }
+const breakPointsObj = { values, max: {}, min: {} }
 
 Object.keys(values).forEach((key) => {
   const breakpoint = values[key]
