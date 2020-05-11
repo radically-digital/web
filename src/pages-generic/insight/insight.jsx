@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../../components/Layout"
-import { RichText } from "prismic-reactjs"
 import { timeAgo } from "../../utils/human-date"
 import Img from "gatsby-image"
 import { styledComponents } from "./styledComponents"
@@ -26,20 +25,14 @@ const Insight = ({ data }) => {
     heroImageAlt,
   } = xformer(data)
 
-  const titlePlainText = RichText.asText(title)
-
   return (
-    <Layout
-      pageClass="blog-post"
-      title={titlePlainText}
-      description={description}
-    >
+    <Layout pageClass="blog-post" title={title} description={description}>
       <section>
         <PostContainer>
           <Meta>
             <MetaContent>{category}</MetaContent>
           </Meta>
-          <Title>{titlePlainText}</Title>
+          <Title>{title}</Title>
           <Meta>
             <MetaContent>
               {publishDate}
