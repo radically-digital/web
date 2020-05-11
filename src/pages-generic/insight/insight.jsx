@@ -26,7 +26,7 @@ const Insight = ({ data }) => {
   } = xformer(data)
 
   return (
-    <Layout pageClass="blog-post" title={title} description={description}>
+    <Layout title={title} description={description}>
       <section>
         <PostContainer>
           <Meta>
