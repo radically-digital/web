@@ -12,18 +12,18 @@ export const styledComponents = {
     }
   `,
   Title: styled.h1`
-    font-size: ${fonts.fontSize.lg.h1};
+    font-size: ${fonts.fontSize.h1.lg};
     font-weight: ${fonts.fontWeight.bold};
     text-align: center;
     margin: ${spacing(4)};
     ${breakpoints.max.md} {
-      font-size: ${fonts.fontSize.md.h1};
+      font-size: ${fonts.fontSize.h1.md};
     }
     ${breakpoints.max.sm} {
-      font-size: ${fonts.fontSize.sm.h1};
+      font-size: ${fonts.fontSize.h1.sm};
     }
     ${breakpoints.max.xs} {
-      font-size: ${fonts.fontSize.xs.h1};
+      font-size: ${fonts.fontSize.h1.xs};
     }
   `,
   Meta: styled.div`
@@ -35,9 +35,9 @@ export const styledComponents = {
       margin: ${spacing(4)} 0;
   `,
   MetaContent: styled.p`
-    font-size: ${fonts.fontSize.lg.meta};
+    font-size: ${fonts.fontSize.meta.lg};
     ${breakpoints.max.xs} {
-      font-size: ${fonts.fontSize.xs.meta};
+      font-size: ${fonts.fontSize.meta.xs};
     }
   `,
   SpanSpacing: styled.span`

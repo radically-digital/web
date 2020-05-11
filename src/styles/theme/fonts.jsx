@@ -1,21 +1,17 @@
 export const fonts = {
   fontFamily: "'Poppins', sans-serif",
   fontSize: {
-    lg: {
-      h1: "8rem",
-      meta: "1.5rem",
+    h1: {
+      lg: "8rem",
+      md: "6rem",
+      sm: "4rem",
+      xs: "2rem",
     },
-    md: {
-      h1: "6rem",
-      meta: "1.25rem",
-    },
-    sm: {
-      h1: "4rem",
-      meta: "1rem",
-    },
-    xs: {
-      h1: "2rem",
-      meta: "0.75rem",
+    meta: {
+      lg: "1.5rem",
+      md: "1.25rem",
+      sm: "1rem",
+      xs: "0.75rem",
     },
   },
   fontWeight: {
