@@ -4,12 +4,11 @@ const values = {
   md: "1024px",
 }
 
-const breakPointsObj = { values, max: {}, min: {} }
+const breakPointsObj = { values }
 
 Object.keys(values).forEach((key) => {
   const breakpoint = values[key]
-  breakPointsObj.max[key] = `@media screen and (max-width: ${breakpoint})`
-  breakPointsObj.min[key] = `@media screen and (min-width: ${breakpoint})`
+  breakPointsObj[key] = `@media screen and (min-width: ${breakpoint})`
 })
 
 export const breakpoints = breakPointsObj

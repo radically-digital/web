@@ -2,17 +2,16 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../../components/Layout"
 import { timeAgo } from "../../utils/human-date"
-import Img from "gatsby-image"
-import { styledComponents } from "./styledComponents"
+import { styles } from "./styles"
 
 const {
   PostContainer,
-  HeroImageContainer,
+  HeroImage,
   Meta,
   MetaContent,
   SpanSpacing,
   Title,
-} = styledComponents
+} = styles
 
 const Insight = ({ data }) => {
   const {
@@ -36,13 +35,11 @@ const Insight = ({ data }) => {
           <Meta>
             <MetaContent>
               {publishDate}
-              <SpanSpacing>•</SpanSpacing>
+              <SpanSpacing />
               {author}
             </MetaContent>
           </Meta>
-          <HeroImageContainer>
-            <Img fluid={heroImage} alt={heroImageAlt} />
-          </HeroImageContainer>
+          <HeroImage fluid={heroImage} alt={heroImageAlt} />
         </PostContainer>
       </section>
     </Layout>
@@ -93,7 +90,7 @@ export const pageQuery = graphql`
         hero_image
         hero_imageSharp {
           childImageSharp {
-            fluid(quality: 100) {
+            fluid(maxWidth: 1290, maxHeight: 740) {
               ...GatsbyImageSharpFluid
             }
           }
