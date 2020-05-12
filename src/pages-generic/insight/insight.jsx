@@ -8,11 +8,34 @@ import { styles } from "./styles"
 
 const { PostContainer, ArticleBody, IntroParagraph } = styles
 
-// const Sections = ({ data }) => {
-//   console.log(data)
+const ArticleSections = ({ sections }) => {
+  const sectionsMarkup = sections.map((sectionItem) => {
+    const item = sectionItem.primary
 
-//   return null
-// }
+    if (item.intro_paragraph) {
+      return (
+        <IntroParagraph key={item.intro_paragraph}>
+          {item.intro_paragraph}
+        </IntroParagraph>
+      )
+    }
+
+    if (item.text_section) {
+      console.log(item.text_section)
+      const paragraphs = item.text_section.map((paragraph) => {
+        console.log(paragraph)
+        return <p key={paragraph.text}>{paragraph.text}</p>
+      })
+
+      return <>{paragraphs}</>
+    }
+
+    return null
+  })
+
+  console.log(<>{sectionsMarkup}</>)
+  return <>{sectionsMarkup}</>
+}
 
 const Insight = ({ data }) => {
   const {
@@ -23,7 +46,7 @@ const Insight = ({ data }) => {
     author,
     heroImage,
     heroImageAlt,
-    introParagraph,
+    body,
   } = xformer(data)
 
   return (
@@ -38,8 +61,7 @@ const Insight = ({ data }) => {
           heroImageAlt={heroImageAlt}
         />
         <ArticleBody>
-          <IntroParagraph>{introParagraph}</IntroParagraph>
-          {/* {Sections} */}
+          <ArticleSections sections={body} />
         </ArticleBody>
       </PostContainer>
     </Layout>
@@ -66,7 +88,7 @@ const xformer = (data) => {
     publishDate: timeAgo(timestamp),
     heroImageAlt: hero_image.alt,
     heroImage: hero_imageSharp.childImageSharp.fluid,
-    introParagraph: body[0].primary.intro_paragraph,
+    body,
   }
 }
 
@@ -92,6 +114,12 @@ export const pageQuery = graphql`
             type
             primary {
               intro_paragraph
+            }
+          }
+          ... on PRISMIC_InsightBodyText_section {
+            type
+            primary {
+              text_section
             }
           }
         }
