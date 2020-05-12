@@ -1,12 +1,26 @@
-const path = require("path")
+const fs = require("fs")
+const dir = "./.cache/caches/gatsby-source-prismic-graphql"
+const { createInsights } = require("./templates/createInsights")
+const { createPosts } = require("./templates/createPosts")
 
-const { postsPerPage } = require("./config/website")
+/* Fix for gatsby-source-prismic-graphql bug related to imageSharp
+https://github.com/birkir/gatsby-source-prismic-graphql/issues/162 */
+exports.onPreBootstrap = () => {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir)
+  }
+}
+
+const resultCheck = ({ reporter }) => (result) => {
+  if (result.errors) {
+    reporter.panicOnBuild("Error while running GraphQL query:", result.errors)
+  }
+
+  return result
+}
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
-
-  const postTemplate = path.resolve("src/pages-generic/post.jsx")
-  const postsTemplate = path.resolve("src/pages-generic/posts.jsx")
 
   return graphql(
     `
@@ -22,46 +36,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             }
             totalCount
           }
+          allInsights {
+            edges {
+              node {
+                _meta {
+                  uid
+                }
+              }
+            }
+            totalCount
+          }
         }
       }
     `
-  ).then((result) => {
-    if (result.errors) {
-      reporter.panicOnBuild("Error while running GraphQL query:", result.errors)
-    }
-
-    const posts = result.data.prismic.allPosts.edges
-    const totalCount = result.data.prismic.allPosts.totalCount
-
-    posts.forEach((post) => {
-      const uid = post.node._meta.uid
-
-      createPage({
-        path: `/insights/${uid}`,
-        component: postTemplate,
-        context: {
-          uid,
-        },
-      })
-    })
-
-    const numPages = Math.ceil(totalCount / postsPerPage)
-
-    Array.from({ length: numPages }).forEach((_, i) => {
-      const limit = postsPerPage
-      const skip = i * postsPerPage
-      const currentPage = i + 1
-
-      createPage({
-        path: i === 0 ? "/insights" : `/insights/${i + 1}`,
-        component: postsTemplate,
-        context: {
-          limit,
-          skip: limit - skip,
-          numPages,
-          currentPage,
-        },
-      })
-    })
-  })
+  )
+    .then(resultCheck({ reporter }))
+    .then((result) =>
+      Promise.all([
+        createPosts({ createPage })(result),
+        createInsights({ createPage })(result),
+      ])
+    )
 }

@@ -26,7 +26,7 @@
   "rules": {
     "semi": ["error", "never"],
     "comma-dangle": ["error", "always-multiline"],
-    "no-console": ["error", {"allow":["error", "warn", "info"]}],
+    "no-console": ["warn", {"allow":["error", "warn", "info"]}],
     "no-multiple-empty-lines": ["warn", {"max": 1}],
     "no-undef": 2,
     "no-unused-vars": "warn",

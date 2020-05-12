@@ -37,5 +37,7 @@ module.exports = {
       },
     },
     "gatsby-plugin-linaria",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
   ],
 }
