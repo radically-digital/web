@@ -3,39 +3,11 @@ import { graphql } from "gatsby"
 import Layout from "../../components/Layout"
 import { timeAgo } from "../../utils/human-date"
 import ArticleHeader from "../../components/ArticleHeader/ArticleHeader"
+import ArticleSections from "../../components/ArticleSections/ArticleSections"
 
 import { styles } from "./styles"
 
-const { PostContainer, ArticleBody, IntroParagraph } = styles
-
-const ArticleSections = ({ sections }) => {
-  const sectionsMarkup = sections.map((sectionItem) => {
-    const item = sectionItem.primary
-
-    if (item.intro_paragraph) {
-      return (
-        <IntroParagraph key={item.intro_paragraph}>
-          {item.intro_paragraph}
-        </IntroParagraph>
-      )
-    }
-
-    if (item.text_section) {
-      console.log(item.text_section)
-      const paragraphs = item.text_section.map((paragraph) => {
-        console.log(paragraph)
-        return <p key={paragraph.text}>{paragraph.text}</p>
-      })
-
-      return <>{paragraphs}</>
-    }
-
-    return null
-  })
-
-  console.log(<>{sectionsMarkup}</>)
-  return <>{sectionsMarkup}</>
-}
+const { PostContainer, ArticleBody } = styles
 
 const Insight = ({ data }) => {
   const {
