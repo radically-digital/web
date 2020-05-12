@@ -2,16 +2,17 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../../components/Layout"
 import { timeAgo } from "../../utils/human-date"
+import ArticleHeader from "../../components/ArticleHeader/ArticleHeader"
+
 import { styles } from "./styles"
 
-const {
-  PostContainer,
-  HeroImage,
-  Meta,
-  MetaContent,
-  SpanSpacing,
-  Title,
-} = styles
+const { PostContainer, ArticleBody, IntroParagraph } = styles
+
+// const Sections = ({ data }) => {
+//   console.log(data)
+
+//   return null
+// }
 
 const Insight = ({ data }) => {
   const {
@@ -22,26 +23,25 @@ const Insight = ({ data }) => {
     author,
     heroImage,
     heroImageAlt,
+    introParagraph,
   } = xformer(data)
 
   return (
     <Layout title={title} description={description}>
-      <section>
-        <PostContainer>
-          <Meta>
-            <MetaContent>{category}</MetaContent>
-          </Meta>
-          <Title>{title}</Title>
-          <Meta>
-            <MetaContent>
-              {publishDate}
-              <SpanSpacing />
-              {author}
-            </MetaContent>
-          </Meta>
-          <HeroImage fluid={heroImage} alt={heroImageAlt} />
-        </PostContainer>
-      </section>
+      <PostContainer>
+        <ArticleHeader
+          publishDate={publishDate}
+          title={title}
+          category={category}
+          author={author}
+          heroImage={heroImage}
+          heroImageAlt={heroImageAlt}
+        />
+        <ArticleBody>
+          <IntroParagraph>{introParagraph}</IntroParagraph>
+          {/* {Sections} */}
+        </ArticleBody>
+      </PostContainer>
     </Layout>
   )
 }
@@ -55,6 +55,7 @@ const xformer = (data) => {
     timestamp,
     hero_image,
     hero_imageSharp,
+    body,
   } = data.prismic.insight
 
   return {
@@ -65,6 +66,7 @@ const xformer = (data) => {
     publishDate: timeAgo(timestamp),
     heroImageAlt: hero_image.alt,
     heroImage: hero_imageSharp.childImageSharp.fluid,
+    introParagraph: body[0].primary.intro_paragraph,
   }
 }
 
@@ -82,6 +84,15 @@ export const pageQuery = graphql`
           __typename
           ... on PRISMIC_Author_tag {
             author_tag
+          }
+        }
+        body {
+          __typename
+          ... on PRISMIC_InsightBodyIntro_paragraph {
+            type
+            primary {
+              intro_paragraph
+            }
           }
         }
         title

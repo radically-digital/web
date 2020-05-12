@@ -8,6 +8,7 @@ export const fonts = {
       xs: "2rem",
     },
     paragraph: {
+      xl: "2.8rem",
       lg: "1.8rem",
       md: "1.6rem",
       sm: "1.5rem",
@@ -16,5 +17,10 @@ export const fonts = {
   },
   fontWeight: {
     bold: "bold",
+  },
+  lineHeight: {
+    paragraph: {
+      xl: "41px",
+    },
   },
 }
