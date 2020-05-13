@@ -12,6 +12,10 @@ export const styles = {
     }
   `,
   ArticleBody: styled.div`
-    padding: 0 ${spacing(50)};
+    padding: 0 ${spacing(5)};
+
+    ${breakpoints.md} {
+      padding: 0 ${spacing(50)};
+    }
   `,
 }

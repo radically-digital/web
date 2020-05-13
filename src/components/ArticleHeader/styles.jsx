@@ -16,7 +16,7 @@ export const styles = {
     ${breakpoints.sm} {
       font-size: ${fonts.fontSize.heading.md};
     }
-    ${breakpoints.md} {
+    ${breakpoints.lg} {
       font-size: ${fonts.fontSize.heading.lg};
     }
   `,
