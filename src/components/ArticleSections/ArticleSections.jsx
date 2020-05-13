@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid"
 
 import { styles } from "./styles"
 
-const { IntroParagraph } = styles
+const { IntroParagraph, ParagraphHeading } = styles
 
 const ArticleSections = ({ sections }) => {
   const sectionsMarkup = sections.map((sectionItem) => {
@@ -21,6 +21,14 @@ const ArticleSections = ({ sections }) => {
       ))
 
       return <section key={uuidv4()}>{paragraphs}</section>
+    }
+
+    if (item.paragraph_heading) {
+      return (
+        <ParagraphHeading key={uuidv4()}>
+          {item.paragraph_heading}
+        </ParagraphHeading>
+      )
     }
 
     return null

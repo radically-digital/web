@@ -94,6 +94,12 @@ export const pageQuery = graphql`
               text_section
             }
           }
+          ... on PRISMIC_InsightBodyHeading {
+            type
+            primary {
+              paragraph_heading
+            }
+          }
         }
         title
         description

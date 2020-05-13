@@ -21,4 +21,11 @@ export const styles = {
       margin-top: 0.15em;
     }
   `,
+  ParagraphHeading: styled.h2`
+    font-size: ${fonts.fontSize.heading.xs};
+    margin: ${spacing(10)} 0;
+    ${breakpoints.xs} {
+      font-size: ${fonts.fontSize.heading.sm};
+    }
+  `,
 }
