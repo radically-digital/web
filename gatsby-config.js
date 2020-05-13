@@ -9,7 +9,6 @@ const website = require("./config/website")
 const DEVELOPMENT = process.env.NODE_ENV === "development"
 
 module.exports = {
-  pathPrefix: "/assets",
   siteMetadata: {
     title: website.defaultTitle,
     description: website.defaultDescription,
