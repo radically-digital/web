@@ -1,7 +1,8 @@
 const values = {
   xs: "640px",
   sm: "768px",
-  md: "1024px",
+  md: "960px",
+  lg: "1024px",
 }
 
 const breakPointsObj = { values }
