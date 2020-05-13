@@ -1,4 +1,5 @@
 import React from "react"
+import { v4 as uuidv4 } from "uuid"
 
 import { styles } from "./styles"
 
@@ -10,18 +11,16 @@ const ArticleSections = ({ sections }) => {
 
     if (item.intro_paragraph) {
       return (
-        <IntroParagraph key={item.intro_paragraph}>
-          {item.intro_paragraph}
-        </IntroParagraph>
+        <IntroParagraph key={uuidv4()}>{item.intro_paragraph}</IntroParagraph>
       )
     }
 
     if (item.text_section) {
-      const paragraphs = item.text_section.map((paragraph) => {
-        return <p key={paragraph.text}>{paragraph.text}</p>
-      })
+      const paragraphs = item.text_section.map((paragraph) => (
+        <p key={uuidv4()}>{paragraph.text}</p>
+      ))
 
-      return <>{paragraphs}</>
+      return <section key={uuidv4()}>{paragraphs}</section>
     }
 
     return null
