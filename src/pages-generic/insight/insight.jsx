@@ -7,7 +7,7 @@ import ArticleSections from "../../components/ArticleSections/ArticleSections"
 
 import { styles } from "./styles"
 
-const { PostContainer, ArticleBody } = styles
+const { HeaderContainer } = styles
 
 const Insight = ({ data }) => {
   const {
@@ -23,19 +23,19 @@ const Insight = ({ data }) => {
 
   return (
     <Layout title={title} description={description}>
-      <PostContainer>
-        <ArticleHeader
-          publishDate={publishDate}
-          title={title}
-          category={category}
-          author={author}
-          heroImage={heroImage}
-          heroImageAlt={heroImageAlt}
-        />
-        <ArticleBody>
-          <ArticleSections sections={body} />
-        </ArticleBody>
-      </PostContainer>
+      <article>
+        <HeaderContainer>
+          <ArticleHeader
+            publishDate={publishDate}
+            title={title}
+            category={category}
+            author={author}
+            heroImage={heroImage}
+            heroImageAlt={heroImageAlt}
+          />
+        </HeaderContainer>
+        <ArticleSections sections={body} />
+      </article>
     </Layout>
   )
 }
@@ -94,6 +94,27 @@ export const pageQuery = graphql`
               text_section
             }
           }
+          ... on PRISMIC_InsightBodyHeading {
+            type
+            primary {
+              paragraph_heading
+            }
+          }
+          ... on PRISMIC_InsightBodyImage {
+            type
+            primary {
+              image
+              imageSharp {
+                childImageSharp {
+                  fluid(maxWidth: 1980, maxHeight: 1080) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+              image_caption
+              full_width
+            }
+          }
         }
         title
         description
@@ -101,7 +122,7 @@ export const pageQuery = graphql`
         hero_image
         hero_imageSharp {
           childImageSharp {
-            fluid(maxWidth: 1290, maxHeight: 740) {
+            fluid(maxWidth: 1980, maxHeight: 1080) {
               ...GatsbyImageSharpFluid
             }
           }
