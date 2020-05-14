@@ -6,16 +6,13 @@ import Img from "gatsby-image"
 const { spacing, fonts } = theme
 
 const textMargins = `
-    margin: 0 ${spacing(5)};
-    margin-bottom: ${spacing(10)};
+    margin: 0 ${spacing(5)} ${spacing(10)};
 
     ${breakpoints.md} {
-      margin: 0 ${spacing(40)};
-      margin-bottom: ${spacing(10)};
+      margin: 0 ${spacing(40)} ${spacing(10)};
     }
     ${breakpoints.xl} {
-      margin: 0 ${spacing(100)};
-      margin-bottom: ${spacing(10)};
+      margin: 0 ${spacing(100)} ${spacing(10)};
     }
 `
 
@@ -53,16 +50,13 @@ export const styles = {
     margin-bottom: ${spacing(10)};
   `,
   Image: styled(Img)`
-    margin: 0;
-    margin-bottom: ${spacing(5)};
+    margin: 0 0 ${spacing(5)};
 
     ${breakpoints.lg} {
-      margin: 0 ${(props) => (props.fullWidth ? 0 : spacing(30))};
-      margin-bottom: ${spacing(5)};
+      margin: 0 ${(props) => (props.fullWidth ? 0 : spacing(30))} ${spacing(5)};
     }
     ${breakpoints.xl} {
-      margin: 0 ${(props) => (props.fullWidth ? 0 : spacing(70))};
-      margin-bottom: ${spacing(5)};
+      margin: 0 ${(props) => (props.fullWidth ? 0 : spacing(70))} ${spacing(5)};
     }
   `,
   ImageCaption: styled.p`
