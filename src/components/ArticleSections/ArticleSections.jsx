@@ -16,48 +16,52 @@ const ArticleSections = ({ sections }) => {
   const sectionsMarkup = sections.map((sectionItem) => {
     const { type } = sectionItem
 
-    if (type === "intro_paragraph") {
-      const { intro_paragraph } = sectionItem.primary
-      return <IntroParagraph key={uuidv4()}>{intro_paragraph}</IntroParagraph>
+    switch (type) {
+      case "intro_paragraph": {
+        const { intro_paragraph } = sectionItem.primary
+        return <IntroParagraph key={uuidv4()}>{intro_paragraph}</IntroParagraph>
+      }
+
+      case "text_section": {
+        const { text_section } = sectionItem.primary
+        const paragraphs = text_section.map((paragraph) => (
+          <p key={uuidv4()}>{paragraph.text}</p>
+        ))
+        return <ParagraphSection key={uuidv4()}>{paragraphs}</ParagraphSection>
+      }
+
+      case "heading": {
+        const { paragraph_heading } = sectionItem.primary
+        return (
+          <ParagraphHeading key={uuidv4()}>
+            {paragraph_heading}
+          </ParagraphHeading>
+        )
+      }
+
+      case "image": {
+        const {
+          imageSharp,
+          image_caption,
+          full_width,
+          image,
+        } = sectionItem.fields[0]
+
+        return (
+          <ImageContainer key={uuidv4()}>
+            <Image
+              fluid={imageSharp.childImageSharp.fluid}
+              alt={image.alt}
+              fullWidth={full_width}
+            />
+            <ImageCaption>{image_caption}</ImageCaption>
+          </ImageContainer>
+        )
+      }
+
+      default:
+        return null
     }
-
-    if (type === "text_section") {
-      const { text_section } = sectionItem.primary
-      const paragraphs = text_section.map((paragraph) => (
-        <p key={uuidv4()}>{paragraph.text}</p>
-      ))
-
-      return <ParagraphSection key={uuidv4()}>{paragraphs}</ParagraphSection>
-    }
-
-    if (type === "heading") {
-      const { paragraph_heading } = sectionItem.primary
-      return (
-        <ParagraphHeading key={uuidv4()}>{paragraph_heading}</ParagraphHeading>
-      )
-    }
-
-    if (type === "image") {
-      const {
-        imageSharp,
-        image_caption,
-        full_width,
-        image,
-      } = sectionItem.fields[0]
-
-      return (
-        <ImageContainer key={uuidv4()}>
-          <Image
-            fluid={imageSharp.childImageSharp.fluid}
-            alt={image.alt}
-            fullWidth={full_width}
-          />
-          <ImageCaption>{image_caption}</ImageCaption>
-        </ImageContainer>
-      )
-    }
-
-    return null
   })
 
   return <>{sectionsMarkup}</>
