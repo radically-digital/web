@@ -102,7 +102,7 @@ export const pageQuery = graphql`
           }
           ... on PRISMIC_InsightBodyImage {
             type
-            fields {
+            primary {
               image
               imageSharp {
                 childImageSharp {

@@ -45,7 +45,7 @@ const ArticleSections = ({ sections }) => {
           image_caption,
           full_width,
           image,
-        } = sectionItem.fields[0]
+        } = sectionItem.primary
 
         return (
           <ImageContainer key={uuidv4()}>
