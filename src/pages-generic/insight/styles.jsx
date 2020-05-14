@@ -4,18 +4,12 @@ import { styled } from "linaria/react"
 const { spacing, breakpoints } = theme
 
 export const styles = {
-  PostContainer: styled.article`
-    margin: ${spacing(20)} auto;
+  HeaderContainer: styled.section`
+    margin: ${spacing(10)} auto;
     width: 100%;
     ${breakpoints.xs} {
+      margin: ${spacing(20)} auto;
       width: 80%;
-    }
-  `,
-  ArticleBody: styled.div`
-    padding: 0 ${spacing(5)};
-
-    ${breakpoints.md} {
-      padding: 0 ${spacing(50)};
     }
   `,
 }
