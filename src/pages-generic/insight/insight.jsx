@@ -57,7 +57,7 @@ const xformer = (data) => {
     title,
     description,
     author: author_tag.author_tag,
-    publishDate: timeAgo(timestamp),
+    publishDate: timeAgo(timestamp.slice(0, 10)),
     heroImageAlt: hero_image.alt,
     heroImage: hero_imageSharp.childImageSharp.fluid,
     body,

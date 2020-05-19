@@ -5,4 +5,6 @@ export const humanDate = (isoDate) =>
   format(new Date(isoDate), "do 'of' MMMM yyyy")
 
 export const timeAgo = (isoDate) =>
-  formatDistanceStrict(new Date(isoDate), new Date(), { addSuffix: true })
+  formatDistanceStrict(new Date(isoDate), new Date(), {
+    addSuffix: true,
+  })
