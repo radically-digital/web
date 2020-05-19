@@ -16,11 +16,12 @@ export const fonts = {
     },
   },
   fontWeight: {
-    bold: "bold",
+    bold: 500,
   },
   lineHeight: {
     paragraph: {
       xl: "41px",
+      lg: "30px",
     },
   },
 }

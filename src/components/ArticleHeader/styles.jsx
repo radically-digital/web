@@ -31,6 +31,7 @@ export const styles = {
   `,
   MetaContent: styled.p`
     font-size: ${fonts.fontSize.paragraph.xs};
+    font-weight: ${fonts.fontWeight.bold};
     ${breakpoints.xs} {
       font-size: ${fonts.fontSize.paragraph.sm};
     }

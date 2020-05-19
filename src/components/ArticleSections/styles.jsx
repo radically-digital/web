@@ -12,7 +12,7 @@ const textMargins = `
       margin: 0 ${spacing(40)} ${spacing(10)};
     }
     ${breakpoints.xl} {
-      margin: 0 ${spacing(100)} ${spacing(10)};
+      margin: 0 ${spacing(105)} ${spacing(10)};
     }
 `
 
@@ -20,7 +20,6 @@ export const styles = {
   IntroParagraph: styled.section`
     font-size: ${fonts.fontSize.paragraph.lg};
     line-height: ${fonts.lineHeight.paragraph.xl};
-    font-weight: ${fonts.fontWeight.bold};
 
     ${textMargins}
 
@@ -29,19 +28,20 @@ export const styles = {
     }
 
     &::first-letter {
-      font-size: 8.4rem;
+      font-size: 9rem;
       float: left;
-      margin-top: 0.15em;
+      margin-top: 0.25em;
     }
   `,
   ParagraphSection: styled.section`
     margin-bottom: ${spacing(10)};
+    line-height: ${fonts.lineHeight.paragraph.lg};
     ${textMargins}
   `,
   ParagraphHeading: styled.h2`
     font-size: ${fonts.fontSize.heading.xs};
     ${textMargins}
-
+    line-height: ${fonts.lineHeight.paragraph.lg};
     ${breakpoints.xs} {
       font-size: ${fonts.fontSize.heading.sm};
     },
@@ -61,7 +61,7 @@ export const styles = {
   `,
   ImageCaption: styled.p`
     ${textMargins}
-    font-size: ${fonts.fontSize.paragraph.sm}
-    opacity: 59%
+    font-size: ${fonts.fontSize.paragraph.xs}
+    opacity: 48%
   `,
 }
