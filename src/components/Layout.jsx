@@ -1,25 +1,18 @@
 import React from "react"
 
-const classNames = require("classnames")
-
 import SEO from "./SEO"
 import SiteHeader from "./SiteHeader"
 import SiteFooter from "./SiteFooter"
 
-const Layout = ({ children, title, description, ...props }) => {
-  const { pageClass } = props
-  const pageClasses = classNames("page", {
-    [`page-${pageClass}`]: pageClass,
-  })
-
+const Layout = ({ children, title, description }) => {
   return (
-    <div className="site-wrapper">
+    <div>
       <SEO title={title} description={description} />
 
       <SiteHeader />
 
-      <main className="page-wrapper">
-        <div className={pageClasses}>{children}</div>
+      <main>
+        <div>{children}</div>
       </main>
 
       <SiteFooter />
