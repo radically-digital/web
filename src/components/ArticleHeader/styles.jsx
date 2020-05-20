@@ -10,7 +10,8 @@ export const styles = {
     font-weight: ${fonts.fontWeight.bold};
     text-align: center;
     margin: ${spacing(4)};
-    line-height: ${fonts.lineHeight.heading.xl} ${breakpoints.xs} {
+    line-height: ${fonts.lineHeight.heading.xl};
+    ${breakpoints.xs} {
       font-size: ${fonts.fontSize.heading.sm};
     }
     ${breakpoints.sm} {
