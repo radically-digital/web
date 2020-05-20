@@ -9,7 +9,7 @@ export const styles = {
     width: 100%;
     ${breakpoints.xs} {
       margin: ${spacing(20)} auto;
-      width: 80%;
+      width: 85%;
     }
   `,
 }

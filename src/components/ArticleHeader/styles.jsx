@@ -10,6 +10,7 @@ export const styles = {
     font-weight: ${fonts.fontWeight.bold};
     text-align: center;
     margin: ${spacing(4)};
+    line-height: ${fonts.lineHeight.heading.xl};
     ${breakpoints.xs} {
       font-size: ${fonts.fontSize.heading.sm};
     }
@@ -31,6 +32,7 @@ export const styles = {
   `,
   MetaContent: styled.p`
     font-size: ${fonts.fontSize.paragraph.xs};
+    font-weight: ${fonts.fontWeight.bold};
     ${breakpoints.xs} {
       font-size: ${fonts.fontSize.paragraph.sm};
     }
