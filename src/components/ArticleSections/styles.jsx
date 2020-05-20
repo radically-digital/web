@@ -30,7 +30,7 @@ export const styles = {
     &::first-letter {
       font-size: 9rem;
       float: left;
-      margin-top: 0.25em;
+      margin-top: 1.9rem;
     }
   `,
   ParagraphSection: styled.section`
@@ -48,10 +48,6 @@ export const styles = {
   `,
   ImageContainer: styled.div`
     margin-bottom: ${spacing(10)};
-  `,
-  Image: styled(Img)`
-    margin: 0 0 ${spacing(5)};
-
     ${breakpoints.lg} {
       margin: 0 ${(props) => (props.fullWidth ? 0 : spacing(30))} ${spacing(5)};
     }
@@ -59,9 +55,14 @@ export const styles = {
       margin: 0 ${(props) => (props.fullWidth ? 0 : spacing(70))} ${spacing(5)};
     }
   `,
+  Image: styled(Img)`
+    margin: 0 0 ${spacing(3)};
+    width: 100%;
+  `,
   ImageCaption: styled.p`
-    ${textMargins}
     font-size: ${fonts.fontSize.paragraph.xs}
     opacity: 48%
+    &.fullWidth {
+      ${textMargins}}
   `,
 }

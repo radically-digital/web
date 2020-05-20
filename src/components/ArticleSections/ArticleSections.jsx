@@ -1,4 +1,5 @@
 import React from "react"
+import classNames from "classnames"
 import { v4 as uuidv4 } from "uuid"
 
 import { styles } from "./styles"
@@ -48,13 +49,15 @@ const ArticleSections = ({ sections }) => {
         } = sectionItem.primary
 
         return (
-          <ImageContainer key={uuidv4()}>
+          <ImageContainer fullWidth={full_width} key={uuidv4()}>
             <Image
               fluid={imageSharp.childImageSharp.fluid}
               alt={image.alt}
               fullWidth={full_width}
             />
-            <ImageCaption>{image_caption}</ImageCaption>
+            <ImageCaption className={classNames({ fullWidth: full_width })}>
+              {image_caption}
+            </ImageCaption>
           </ImageContainer>
         )
       }
