@@ -41,7 +41,7 @@ export const styles = {
   ParagraphHeading: styled.h2`
     font-size: ${fonts.fontSize.heading.xs};
     ${textMargins}
-    line-height: ${fonts.lineHeight.paragraph.lg};
+    line-height: ${fonts.lineHeight.heading.md};
     ${breakpoints.xs} {
       font-size: ${fonts.fontSize.heading.sm};
     },

@@ -19,6 +19,10 @@ export const fonts = {
     bold: 500,
   },
   lineHeight: {
+    heading: {
+      xl: "96px",
+      md: "40px",
+    },
     paragraph: {
       xl: "41px",
       lg: "30px",
