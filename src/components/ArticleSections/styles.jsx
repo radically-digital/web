@@ -61,7 +61,7 @@ export const styles = {
   `,
   ImageCaption: styled.p`
     font-size: ${fonts.fontSize.paragraph.xs}
-    opacity: 48%
+    opacity: 0.5
     &.fullWidth {
       ${textMargins}}
   `,
