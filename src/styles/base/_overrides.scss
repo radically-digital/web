@@ -1,0 +1,6 @@
+// Fix for Firefox bug on Intro paragraph
+// This should be removed when ::initial-letter has better support https://caniuse.com/#feat=css-initial-letter
+// Or if you find a better solution ¯\_(ツ)_/¯
+* ::first-letter {
+  @-moz-document url-prefix() {margin-top: 0.9rem!important;}
+}

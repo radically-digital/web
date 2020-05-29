@@ -28,9 +28,10 @@ export const styles = {
     }
 
     &::first-letter {
-      font-size: 9rem;
+      font-size: 320%;
+      /* Due to a browser bug this line is changed for Firefox in the overrides.scss file */
+      margin-top: 1.8rem;
       float: left;
-      margin-top: 1.9rem;
     }
   `,
   ParagraphSection: styled.section`
@@ -44,7 +45,7 @@ export const styles = {
     line-height: ${fonts.lineHeight.heading.md};
     ${breakpoints.xs} {
       font-size: ${fonts.fontSize.heading.sm};
-    },
+    }
   `,
   ImageContainer: styled.div`
     margin-bottom: ${spacing(10)};
@@ -60,9 +61,10 @@ export const styles = {
     width: 100%;
   `,
   ImageCaption: styled.p`
-    font-size: ${fonts.fontSize.paragraph.xs}
-    opacity: 0.5
+    font-size: ${fonts.fontSize.paragraph.xs};
+    opacity: 0.5;
     &.fullWidth {
-      ${textMargins}}
+      ${textMargins}
+    }
   `,
 }
